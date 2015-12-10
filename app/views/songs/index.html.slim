@@ -11,12 +11,14 @@ table
       tr
         td = song.name
         td
-          /= link_to 'Show', song
+          = link_to band_song_path(@band, song), class: 'button' do
+            i.fa.fa-search
+            | Ver
           = link_to edit_band_song_path(@band, song), class: 'button' do
             i.fa.fa-pencil
             | Editar
           = link_to band_song_path(@band, song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
-            i.fa.fa-pencil
+            i.fa.fa-trash
             | Excluir
 
 br
