@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable
 
   has_many :band_leaders, class_name: 'Band'
 
