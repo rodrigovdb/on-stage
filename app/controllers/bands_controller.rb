@@ -1,7 +1,7 @@
 class BandsController < ApplicationController
-  before_action :set_band, only: [:show, :edit, :update, :destroy]
+  before_action :set_band, only: [:show, :edit, :update, :destroy, :invite_people, :join_members, :remove_member]
   before_action :authenticate_user!
-  before_action :check_owner, only: [:edit, :destroy]
+  before_action :check_owner, only: [:edit, :destroy, :invite_people, :join_members, :remove_member]
 
   # GET /bands
   # GET /bands.json
@@ -21,6 +21,35 @@ class BandsController < ApplicationController
 
   # GET /bands/1/edit
   def edit
+  end
+
+  def invite_people
+  end
+
+  def join_members
+    email = params[:email]
+    user  = User.find_by_email email
+
+    return render json: { status: false, message: "Usuário #{email} não encontrado." } unless user
+    return render json: { status: false, message: "Usuário #{email} já pertence à banda #{@band.name}" } if @band.user_belongs? user
+
+    @band.users << user
+
+    render json: { status: true, user: { id: user.id, name: user.email } }
+  end
+
+  def remove_member
+    user_id = params[:member]
+    user    = User.find user_id
+
+    return render json: { status: false, message: "Usuário #{user_id} não encontrado." } unless user
+    return render json: { status: false, message: "Usuário #{email} não pertence à banda #{@band.name}" } unless @band.user_belongs? user
+    return render json: { status: false, message: "Não é possível excluir o criador da banda" } if @band.owner == user
+
+    item  = BandUser.where(band: @band, user: user).first
+    item.destroy
+
+    render json: { status: true, user_id: user_id  }
   end
 
   # POST /bands
@@ -68,7 +97,9 @@ class BandsController < ApplicationController
 
   private
     def check_owner
-      redirect_to bands_path, flash: { error: 'Esta ação só é permitida ao criador da banda' } unless @band.owner == current_user
+      unless @band.owner == current_user
+        format.html { redirect_to bands_path, flash: { error: 'Esta ação só é permitida ao criador da banda' } }
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.

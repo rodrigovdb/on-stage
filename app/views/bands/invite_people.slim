@@ -1,0 +1,28 @@
+h1 Convidar membros
+
+fieldset#members
+  legend Membros atuais
+  ul#current_items.default
+    - @band.users.each do |user|
+      li id="member_#{user.id}"
+        = user.email
+        a.remove_member href='#' onclick='return false;' id="link_remove_#{user.id}"
+          i.fa.fa-trash
+
+  #link
+    a#add_member.button href='#' onclick='return false;'
+      i.fa.fa-plus
+      | Adicionar membro
+  #form style="display: none"
+    #info_message.flash-error style="display: none"
+    .field
+      label e-mail
+      = text_field_tag    :email
+      = hidden_field_tag  :band_id, @band.id
+    .actions
+      a#add_member_save.button href="#" onclick="return false;"
+        i.fa.fa-save
+        | Salvar
+      a#add_member_cancel.button href="#" onclick="return false;"
+        i.fa.fa-close
+        | Cancelar

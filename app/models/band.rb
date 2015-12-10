@@ -5,4 +5,8 @@ class Band < ActiveRecord::Base
   has_many  :users, through:  :band_users
 
   validates :name, presence: true,  uniqueness: true
+
+  def user_belongs?(user)
+    !BandUser.where(band: self, user: user).first.nil?
+  end
 end

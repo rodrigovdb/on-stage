@@ -12,6 +12,9 @@ table
         td = band.name
         td
           - if band.owner == current_user
+            = link_to invite_people_path(band), class: 'button' do
+              i.fa.fa-envelope
+              | Convidar pessoas
             = link_to edit_band_path(band), class: 'button' do
               i.fa.fa-pencil
               | Editar
