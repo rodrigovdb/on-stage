@@ -50,3 +50,11 @@ $success-color : #e6efc2 !default;
 .flash-success {
   @include flash($success-color);
 }
+
+#menu{
+  @include padding(10px);
+
+  .right_links{
+    text-align  : right;
+  }
+}

@@ -1,0 +1,7 @@
+#menu
+  .right_links
+    = current_user.email
+    | &nbsp; 
+    = link_to destroy_user_session_path,  method: :delete, class: 'button' do
+      i.fa.fa-arrow-left
+      | Sair
