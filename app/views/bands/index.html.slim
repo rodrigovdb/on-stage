@@ -15,6 +15,9 @@ table
             i.fa.fa-music
             | Músicas
           
+          = link_to band_setlists_path(band), class: 'button' do
+            i.fa.fa-list
+            | Setlists
           - if band.owner == current_user
             span
               = link_to invite_people_path(band), class: 'button' do

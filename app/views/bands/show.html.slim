@@ -1,12 +1,28 @@
-p#notice = notice
+h2 = @band.name
 
-p
-  strong User:
-  = @band.user
-p
-  strong Name:
-  = @band.name
+= link_to band_songs_path(@band), class: 'button' do
+  i.fa.fa-music
+  | Músicas
 
-= link_to 'Edit', edit_band_path(@band)
-'|
-= link_to 'Back', bands_path
+= link_to band_setlists_path(@band), class: 'button' do
+  i.fa.fa-list
+  | Setlists
+- if @band.owner == current_user
+  span
+    = link_to invite_people_path(@band), class: 'button' do
+      i.fa.fa-envelope
+      | Convidar pessoas
+    = link_to edit_band_path(@band), class: 'button' do
+      i.fa.fa-pencil
+      | Editar
+    = link_to @band, data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
+      i.fa.fa-trash
+      | Excluir
+
+fieldset#members
+  legend Integrantes
+  ul#current_items.default
+    - @band.users.each do |user|
+      li id="member_#{user.id}"
+        = user.email
+
