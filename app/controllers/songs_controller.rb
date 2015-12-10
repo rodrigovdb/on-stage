@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs  = @band.songs
+    @songs  = @band.songs.order(:name)
   end
 
   # GET /songs/1
@@ -68,10 +68,6 @@ class SongsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_song
       @song = Song.find(params[:id])
-    end
-
-    def set_band
-      @band = Band.find params[:band_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

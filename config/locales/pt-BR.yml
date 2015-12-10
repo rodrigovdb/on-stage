@@ -1,11 +1,16 @@
 # see http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
 pt-BR:
+  date:
+    formats:
+      default: '%d/%m-%Y'
+
   activerecord:
     models:
       user    : Usuário
       profile : Perfil
       band    : Banda
       song    : Música
+      setlist : Setlist
     attributes:
       user:
         username:               Usuário
@@ -17,14 +22,18 @@ pt-BR:
         profile               : Perfil
 
       profile:
-        name: Nome
+        name  : Nome
 
       band:
-        name: Nome
+        name  : Nome
 
       song:
-        name: Nome
+        name  : Nome
 
+      setlist:
+        name  : Nome
+        date  : Data
+        notes : Observações
     errors:
       models:
         user:

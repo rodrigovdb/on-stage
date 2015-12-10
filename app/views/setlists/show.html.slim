@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Band:
+  = @setlist.band
+p
+  strong Name:
+  = @setlist.name
+p
+  strong Date:
+  = @setlist.date
+p
+  strong Notes:
+  = @setlist.notes
+
+= link_to 'Edit', edit_setlist_path(@setlist)
+'|
+= link_to 'Back', setlists_path

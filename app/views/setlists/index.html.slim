@@ -1,0 +1,31 @@
+h1 Listing setlists
+
+table
+  thead
+    tr
+      th Nome
+      th Data
+      th Ações
+
+  tbody
+    - @setlists.each do |setlist|
+      tr
+        td = setlist.name
+        td = setlist.date.strftime('%d/%m/%Y')
+        td
+          = link_to band_setlist_path(@band, setlist), class: 'button' do
+            i.fa.fa-search
+            | Ver
+          = link_to edit_band_setlist_path(@band, setlist), class: 'button' do
+            i.fa.fa-pencil
+            | Editar
+          = link_to band_setlist_path(@band, setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
+            i.fa.fa-trash
+            | Excluir
+
+
+br
+
+= link_to new_band_setlist_path(@band), class: 'button' do
+  i.fa.fa-plus
+  | Cadastrar Setlist

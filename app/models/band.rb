@@ -5,8 +5,9 @@ class Band < ActiveRecord::Base
   has_many  :users, through:  :band_users
 
   has_many  :songs
+  has_many  :setlists
 
-  validates :name, presence: true,  uniqueness: true
+  validates :name,  presence: true, uniqueness: { scope: :owner, message: 'Banda já cadastrada' }
 
   def user_belongs?(user)
     !BandUser.where(band: self, user: user).first.nil?

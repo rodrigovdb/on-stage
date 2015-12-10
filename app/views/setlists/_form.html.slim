@@ -1,0 +1,18 @@
+= form_for [@band, @setlist] do |f|
+  - if @setlist.errors.any?
+    #error_explanation.flash-error
+      h2 = "#{pluralize(@setlist.errors.count, "erro")} encontrado(s)"
+      ul
+        - @setlist.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :notes
+    = f.text_area :notes
+  .actions = f.submit

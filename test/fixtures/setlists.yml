@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  band_id: 
+  name: MyString
+  date: 2015-12-10
+  notes: MyText
+
+two:
+  band_id: 
+  name: MyString
+  date: 2015-12-10
+  notes: MyText

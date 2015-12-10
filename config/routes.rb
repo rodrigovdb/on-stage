@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :bands, path: 'minhas-bandas',  path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' } do
-    resources :songs, path: 'minhas-musicas', path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }
+    resources :songs,     path: 'minhas-musicas', path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }
+    resources :setlists,  path: 'meus-setlists',  path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }
   end
 
   scope '/minhas-bandas' do
