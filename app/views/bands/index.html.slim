@@ -3,7 +3,7 @@ h1 Minhas bandas
 table
   thead
     tr
-      th Name
+      th Nome
       th Ações
 
   tbody
@@ -11,16 +11,21 @@ table
       tr
         td = band.name
         td
+          = link_to band_songs_path(band), class: 'button' do
+            i.fa.fa-music
+            | Músicas
+          
           - if band.owner == current_user
-            = link_to invite_people_path(band), class: 'button' do
-              i.fa.fa-envelope
-              | Convidar pessoas
-            = link_to edit_band_path(band), class: 'button' do
-              i.fa.fa-pencil
-              | Editar
-            = link_to band, data: {:confirm => 'Tem certeza?'}, method: :delete, class: 'button' do
-              i.fa.fa-trash
-              | Excluir
+            span
+              = link_to invite_people_path(band), class: 'button' do
+                i.fa.fa-envelope
+                | Convidar pessoas
+              = link_to edit_band_path(band), class: 'button' do
+                i.fa.fa-pencil
+                | Editar
+              = link_to band, data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
+                i.fa.fa-trash
+                | Excluir
 
 br
 = link_to new_band_path, class: 'button' do

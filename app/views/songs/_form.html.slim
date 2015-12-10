@@ -1,0 +1,12 @@
+= form_for [@band, @song] do |f|
+  - if @song.errors.any?
+    #error_explanation.flash-error
+      h2 = "#{pluralize(@song.errors.count, "erro")} encontrado(s)"
+      ul
+        - @song.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions = f.submit

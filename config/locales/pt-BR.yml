@@ -5,6 +5,7 @@ pt-BR:
       user    : Usuário
       profile : Perfil
       band    : Banda
+      song    : Música
     attributes:
       user:
         username:               Usuário
@@ -19,6 +20,9 @@ pt-BR:
         name: Nome
 
       band:
+        name: Nome
+
+      song:
         name: Nome
 
     errors:
