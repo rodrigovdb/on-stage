@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20151210215903) do
   create_table "setlist_songs", force: :cascade do |t|
     t.integer  "setlist_id"
     t.integer  "song_id"
-    t.integer  "order"
+    t.integer  "sort"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
