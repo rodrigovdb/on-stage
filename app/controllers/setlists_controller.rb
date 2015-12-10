@@ -72,6 +72,6 @@ class SetlistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setlist_params
-      params.require(:setlist).permit(:band_id, :name, :date, :notes)
+      params.require(:setlist).permit(:band_id, :name, :date, :notes, setlist_songs_attributes: [:id, :song_id, :_destroy])
     end
 end

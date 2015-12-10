@@ -28,6 +28,9 @@ gem 'unicorn'
 gem 'devise'
 gem 'devise-i18n'
 
+# Coccon <3
+gem 'cocoon'
+
 gem 'pg'
 gem 'seed_dump'
 

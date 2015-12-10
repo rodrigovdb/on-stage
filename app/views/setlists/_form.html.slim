@@ -15,4 +15,22 @@
   .field
     = f.label :notes
     = f.text_area :notes
+
+  fieldset
+    legend Músicas
+    table.table.nested-form
+      thead
+        tr
+          th Nome
+          th.destroy Apagar?
+      tbody#setlist_songs
+        = f.fields_for :setlist_songs do |setlist_song|
+          = render 'setlist_song_fields', f: setlist_song
+      tfoot
+        tr
+          td.links.right-align colspan="2"
+            = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'button' } do
+              = icon 'plus'
+              | Adicionar Música
+
   .actions = f.submit
