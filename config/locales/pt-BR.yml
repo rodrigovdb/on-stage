@@ -1,0 +1,27 @@
+# see http://guides.rubyonrails.org/i18n.html#translations-for-active-record-models
+pt-BR:
+  activerecord:
+    models:
+      user    : Usuário
+      profile : Perfil
+    attributes:
+      user:
+        username:               Usuário
+        current_password      : Senha atual
+        password              : Senha
+        password_confirmation : Confirmação da senha
+        user_type             : Tipo de acesso
+        active                : Ativo
+        profile               : Perfil
+
+      profile:
+        name: Nome
+
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank:    'não pode ficar em branco'
+              taken:    'já existe'
+              too_long: 'deve ter no máximo 255 caracteres'
