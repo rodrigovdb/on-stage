@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210110155) do
+ActiveRecord::Schema.define(version: 20151210124150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "band_users", force: :cascade do |t|
+    t.integer  "band_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "band_users", ["band_id"], name: "index_band_users_on_band_id", using: :btree
+  add_index "band_users", ["user_id"], name: "index_band_users_on_user_id", using: :btree
+
+  create_table "bands", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bands", ["user_id"], name: "index_bands_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +53,7 @@ ActiveRecord::Schema.define(version: 20151210110155) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "band_users", "bands"
+  add_foreign_key "band_users", "users"
+  add_foreign_key "bands", "users"
 end

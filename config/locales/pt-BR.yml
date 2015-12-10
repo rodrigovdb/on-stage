@@ -4,6 +4,7 @@ pt-BR:
     models:
       user    : Usuário
       profile : Perfil
+      band    : Banda
     attributes:
       user:
         username:               Usuário
@@ -15,6 +16,9 @@ pt-BR:
         profile               : Perfil
 
       profile:
+        name: Nome
+
+      band:
         name: Nome
 
     errors:

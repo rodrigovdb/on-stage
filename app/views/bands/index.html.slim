@@ -1,0 +1,26 @@
+h1 Minhas bandas
+
+table
+  thead
+    tr
+      th Name
+      th Ações
+
+  tbody
+    - @bands.each do |band|
+      tr
+        td = band.name
+        td
+          - if band.owner == current_user
+            = link_to edit_band_path(band), class: 'button' do
+              i.fa.fa-pencil
+              | Editar
+            = link_to band, data: {:confirm => 'Tem certeza?'}, method: :delete, class: 'button' do
+              i.fa.fa-trash
+              | Excluir
+
+br
+
+= link_to new_band_path, class: 'button' do
+  i.fa.fa-plus
+  | Cadastrar Banda
