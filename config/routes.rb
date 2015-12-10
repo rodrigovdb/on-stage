@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for  :users, path: '', path_names: { sign_in: 'entrar', sign_out: 'sair', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  resources   :users, path: 'usuarios', path_names: { new: 'cadastrar', edit: 'alterar' }
+  get         '/alterar-senha',   to: 'users#edit_password',    as: :edit_password
+  patch       '/alterar-senha', to: 'users#update_password',  as: :update_password
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
