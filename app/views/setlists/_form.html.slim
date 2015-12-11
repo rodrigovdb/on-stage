@@ -24,7 +24,7 @@
           th Nome
           th.destroy Apagar?
       tbody#setlist_songs
-        = f.fields_for :setlist_songs do |setlist_song|
+        = f.fields_for :setlist_songs, @setlist.setlist_songs.order(:display_sort) do |setlist_song|
           = render 'setlist_song_fields', f: setlist_song
       tfoot
         tr

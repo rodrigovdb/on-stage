@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/debug.rb"
+
 class Setlist < ActiveRecord::Base
   belongs_to :band
 
@@ -7,5 +9,18 @@ class Setlist < ActiveRecord::Base
 
   validates :name,  presence: true, uniqueness: { scope: :band, message: 'Setlist já cadastrado' }
 
-  scope :songs_sort,  -> { joins(setlist_songs: [:song]).order('setlist_songs.order') }
+  after_save  :fix_sort
+
+  def fix_sort
+    count = 1
+
+    setlist_songs.order(:display_sort).each do |item|
+      item.update display_sort: count
+      count += 1
+    end
+  end
+
+  def songs_sorted
+    songs.joins(:setlist_songs).order('setlist_songs.display_sort')
+  end
 end
