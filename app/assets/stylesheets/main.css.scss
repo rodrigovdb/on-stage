@@ -92,4 +92,5 @@ button#menu-button{
 
 .container{
   @include outer-container;
+  @include padding(5px);
 }
