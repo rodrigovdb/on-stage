@@ -1,7 +1,10 @@
-#menu
-  .right_links
-    = current_user.email
-    | &nbsp; 
-    = link_to destroy_user_session_path,  method: :delete, class: 'button' do
-      i.fa.fa-arrow-left
-      | Sair
+header.navigation role="banner"
+  .navigation-wrapper
+    a.logo
+      .title
+        strong OnStage
+        | by rodrigovdb
+
+    - if user_signed_in?
+      .navigation-tools
+        == link_to raw('Sair ' + icon('sign-out')), destroy_user_session_path, { method: :delete, class: 'sign-up' }

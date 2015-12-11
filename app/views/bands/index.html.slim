@@ -4,31 +4,12 @@ table
   thead
     tr
       th Nome
-      th Ações
 
   tbody
     - @bands.each do |band|
       tr
-        td = band.name
         td
-          = link_to band_songs_path(band), class: 'button' do
-            i.fa.fa-music
-            | Músicas
-          
-          = link_to band_setlists_path(band), class: 'button' do
-            i.fa.fa-list
-            | Setlists
-          - if band.owner == current_user
-            span
-              = link_to invite_people_path(band), class: 'button' do
-                i.fa.fa-envelope
-                | Convidar pessoas
-              = link_to edit_band_path(band), class: 'button' do
-                i.fa.fa-pencil
-                | Editar
-              = link_to band, data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
-                i.fa.fa-trash
-                | Excluir
+          = link_to band.name, band_path(band)
 
 br
 = link_to new_band_path, class: 'button' do

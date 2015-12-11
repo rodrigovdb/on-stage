@@ -1,23 +1,30 @@
-h2 = @band.name
+h1 = @band.name
 
-= link_to band_songs_path(@band), class: 'button' do
-  i.fa.fa-music
-  | Músicas
+.dropdown
+  .dropdown-container
+    = link_to band_setlists_path(@band), class: 'button btn-large' do
+      i.fa.fa-list
+      | Setlists
+    = link_to band_songs_path(@band), class: 'button btn-large' do
+      i.fa.fa-music
+      | Músicas
 
-= link_to band_setlists_path(@band), class: 'button' do
-  i.fa.fa-list
-  | Setlists
-- if @band.owner == current_user
-  span
-    = link_to invite_people_path(@band), class: 'button' do
-      i.fa.fa-envelope
-      | Convidar pessoas
-    = link_to edit_band_path(@band), class: 'button' do
-      i.fa.fa-pencil
-      | Editar
-    = link_to @band, data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button' do
-      i.fa.fa-trash
-      | Excluir
+    - if @band.owner == current_user
+      p.dropdown-button
+        i.fa.fa-gear
+      ul.dropdown-menu.dropdown-select
+        li
+          = link_to invite_people_path(@band) do
+            i.fa.fa-envelope
+            | Convidar pessoas
+        li
+          = link_to edit_band_path(@band) do
+            i.fa.fa-pencil
+            | Editar
+        li
+          = link_to @band, data: {:confirm => 'Está certo disto?'}, method: :delete do
+            i.fa.fa-trash
+            | Excluir
 
 fieldset#members
   legend Integrantes
@@ -25,4 +32,3 @@ fieldset#members
     - @band.users.each do |user|
       li id="member_#{user.id}"
         = user.email
-

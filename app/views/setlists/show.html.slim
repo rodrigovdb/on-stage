@@ -1,8 +1,15 @@
 h1 = @setlist.name
 
+= link_to edit_band_setlist_path(@band, @setlist), class: 'button btn-large' do
+  i.fa.fa-pencil
+  | Editar
+= link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button btn-large' do
+  i.fa.fa-trash
+  | Excluir
+
 .field
   h2 Data
-  p = @setlist.date
+  p = @setlist.date.strftime('%d/%m/%Y')
 
 .field
   h2 Observações

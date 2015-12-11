@@ -4,6 +4,11 @@ $error-color   : #fbe3e4 !default;
 $notice-color  : #e5edf8 !default;
 $success-color : #e6efc2 !default;
 
+body{
+  @include margin(0px);
+  @include padding(0px);
+}
+
 .button{
   @include button;
   @include padding(2px 12px);
@@ -33,6 +38,11 @@ $success-color : #e6efc2 !default;
   &.btn-sm {
     font-size: modular-scale(-1);
   }
+
+  &.btn-large {
+    font-size: modular-scale(+1);
+  }
+
 }
 
 .flash-alert {
@@ -51,10 +61,35 @@ $success-color : #e6efc2 !default;
   @include flash($success-color);
 }
 
-#menu{
-  @include padding(10px);
-
-  .right_links{
-    text-align  : right;
+header.navigation{
+  .navigation-wrapper{
+    button{
+      margin      : 8px 10px 0px 0px;
+    }
   }
+
+  a.logo{
+    .title{
+      strong{
+        @include margin(0px 10px 0px 0px);
+        font-size : 40px;
+      }
+      font-size   : 20px;
+    }
+  }
+}
+
+button#menu-button{
+  @include border-top-radius(50%);
+  @include border-right-radius(50%);
+  @include border-bottom-radius(50%);
+  @include border-left-radius(50%);
+
+  font-size    : 22px;
+  margin-right : 10px;
+  padding      : 10px;
+}
+
+.container{
+  @include outer-container;
 }
