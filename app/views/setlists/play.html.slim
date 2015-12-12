@@ -1,3 +1,7 @@
+.quit-setlist-play-icon
+  = link_to band_setlist_path(@band, @setlist), class: 'button btn-sm' do
+    i.fa.fa-remove
+
 h1 = @song.name
 
 == render 'play_pagination'
