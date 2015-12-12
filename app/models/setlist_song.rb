@@ -12,4 +12,12 @@ class SetlistSong < ActiveRecord::Base
 
     self.display_sort = display_sort
   end
+
+  def next
+    SetlistSong.where(setlist: setlist, display_sort: display_sort + 1).first
+  end
+
+  def previous
+    SetlistSong.where(setlist: setlist, display_sort: display_sort - 1).first
+  end
 end

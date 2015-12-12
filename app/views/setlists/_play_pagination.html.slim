@@ -1,0 +1,14 @@
+.pagination
+  - if @setlist.first_song != @song
+    = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'button btn-large' do
+      i.fa.fa-fast-backward
+
+    = link_to play_band_setlists_path(@band, @setlist, @setlist_song.previous.song), class: 'button btn-large' do
+      i.fa.fa-step-backward
+
+  - if @setlist.last_song != @song
+    = link_to play_band_setlists_path(@band, @setlist, @setlist_song.next.song), class: 'button btn-large' do
+      i.fa.fa-step-forward
+
+    = link_to play_band_setlists_path(@band, @setlist, @setlist.last_song), class: 'button btn-large' do
+      i.fa.fa-fast-forward

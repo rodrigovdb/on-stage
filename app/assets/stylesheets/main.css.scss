@@ -94,3 +94,7 @@ button#menu-button{
   @include outer-container;
   @include padding(5px);
 }
+
+.pagination{
+          text-align  : right;
+}

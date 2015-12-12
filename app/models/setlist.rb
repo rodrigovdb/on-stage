@@ -23,4 +23,12 @@ class Setlist < ActiveRecord::Base
   def songs_sorted
     songs.joins(:setlist_songs).order('setlist_songs.display_sort')
   end
+
+  def first_song
+    songs_sorted.first
+  end
+
+  def last_song
+    songs.joins(:setlist_songs).order('setlist_songs.display_sort DESC').first
+  end
 end

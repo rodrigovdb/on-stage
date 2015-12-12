@@ -1,6 +1,6 @@
 class SetlistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_setlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_setlist, only: [:show, :edit, :update, :destroy, :play]
   before_action :set_band
 
   # GET /setlists
@@ -12,6 +12,15 @@ class SetlistsController < ApplicationController
   # GET /setlists/1
   # GET /setlists/1.json
   def show
+  end
+
+  def play
+    @setlist_song = SetlistSong.where(setlist: @setlist, song_id: params[:song_id]).first
+    debug params
+    debug @setlist_songs
+    @song         = @setlist_song.song
+
+    render layout: 'play'
   end
 
   # GET /setlists/new
