@@ -7,6 +7,8 @@ $success-color : #e6efc2 !default;
 body{
   @include margin(0px);
   @include padding(0px);
+
+  color : #555;
 }
 
 .button{
@@ -101,4 +103,16 @@ button#menu-button{
 
 .quit-setlist-play-icon{
   float       : right;
+}
+
+table{
+  tbody{
+    tr{
+      td{
+        a{
+          color : #555;
+        }
+      }
+    }
+  }
 }
