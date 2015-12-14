@@ -1,1 +1,1 @@
-web: bundle exec unicorn server -p $PORT
+web: bundle exec rails server -p $PORT
