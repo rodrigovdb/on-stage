@@ -28,7 +28,11 @@ pt-BR:
         name  : Nome
 
       song:
-        name  : Nome
+        name      : Nome
+        artist    : Artista
+        key       : Tom
+        duration  : Duração (segundos)
+        chords    : Cifra
 
       setlist:
         name  : Nome
