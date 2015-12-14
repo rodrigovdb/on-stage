@@ -4,9 +4,22 @@ From musicians, to musicians! Add songs with chords and lyrics, create setlists 
 
 You can create a band, join members and share all songs and setlists.
 
-## Access
+## Running locally
 
-https://onstage.herokuapp.com
+This is a project made with rails and running with Vagrant. So you just need install vagrant into your dev machine and run it. Make sure that vagrant runs postinstall.sh as provision.
+
+Once this step is ok, inside dir where app is, runs:
+
+```
+$ bundle install
+$ rails s -b 0.0.0.0
+```
+
+And access using
+
+```
+http://localhost:3000
+```
 
 ## Contributing
 
