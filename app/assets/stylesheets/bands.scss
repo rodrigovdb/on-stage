@@ -1,0 +1,22 @@
+// Place all the styles related to the bands controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+fieldset#members{
+  ul#current_items{
+    list-style-type : disc;
+
+    li{
+      @include padding(5px);
+      a{
+        i.fa{
+          @include margin(0px 10px);
+
+          color : #000;
+        }
+      }
+    }
+
+    margin-bottom : 10px;
+  }
+}

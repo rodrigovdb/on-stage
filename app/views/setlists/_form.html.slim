@@ -1,0 +1,36 @@
+= form_for [@band, @setlist] do |f|
+  - if @setlist.errors.any?
+    #error_explanation.flash-error
+      h2 = "#{pluralize(@setlist.errors.count, "erro")} encontrado(s)"
+      ul
+        - @setlist.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :notes
+    = f.text_area :notes
+
+  fieldset
+    legend Músicas
+    table.table.nested-form
+      thead
+        tr
+          th Nome
+          th.destroy Apagar?
+      tbody#setlist_songs
+        = f.fields_for :setlist_songs, @setlist.setlist_songs.order(:display_sort) do |setlist_song|
+          = render 'setlist_song_fields', f: setlist_song
+      tfoot
+        tr
+          td.links.right-align colspan="2"
+            = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'button' } do
+              = icon 'plus'
+              | Adicionar Música
+
+  .actions = f.submit

@@ -1,0 +1,18 @@
+h1 Listing setlists
+
+table.table-minimal
+  thead
+    tr
+      th Nome (Data)
+
+  tbody
+    - @setlists.each do |setlist|
+      tr
+        td
+          = link_to "#{setlist.name} (#{setlist.date.strftime('%d/%m/%Y')})", band_setlist_path(@band, setlist)
+
+br
+
+= link_to new_band_setlist_path(@band), class: 'button' do
+  i.fa.fa-plus
+  | Cadastrar Setlist

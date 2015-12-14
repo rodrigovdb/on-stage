@@ -1,0 +1,20 @@
+h1.welcome On Stage
+
+fieldset.session_fieldset
+  h2 Entrar
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email
+      br
+      = f.email_field :email, autofocus: true, placeholder: 'e-mail'
+
+    .field
+      = f.label :password
+      br
+      = f.password_field :password, autocomplete: "off", placeholder: 'Senha'
+
+    .actions
+      = f.submit "Entrar"
+  | ou
+  br
+  = render "devise/shared/links"

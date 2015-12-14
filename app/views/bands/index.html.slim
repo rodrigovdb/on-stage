@@ -1,0 +1,17 @@
+h1 Minhas bandas
+
+table.table-minimal
+  thead
+    tr
+      th Nome
+
+  tbody
+    - @bands.each do |band|
+      tr
+        td
+          = link_to band.name, band_path(band)
+
+br
+= link_to new_band_path, class: 'button' do
+  i.fa.fa-plus
+  | Cadastrar Banda

@@ -1,0 +1,18 @@
+h1 Minhas Músicas
+
+table.table-minimal
+  thead
+    tr
+      th Nome
+
+  tbody
+    - @songs.each do |song|
+      tr
+        td
+          = link_to song.name, band_song_path(@band, song)
+
+br
+
+= link_to new_band_song_path(@band), class: 'button' do
+  i.fa.fa-plus
+  | Cadastrar Música

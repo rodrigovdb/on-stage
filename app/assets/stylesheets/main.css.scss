@@ -1,0 +1,118 @@
+$base-spacing  : 1.5em !default;
+$alert-color   : #fff6bf !default;
+$error-color   : #fbe3e4 !default;
+$notice-color  : #e5edf8 !default;
+$success-color : #e6efc2 !default;
+
+body{
+  @include margin(0px);
+  @include padding(0px);
+
+  color : #555;
+}
+
+.button{
+  @include button;
+  @include padding(2px 12px);
+
+
+  background  : transparent;
+  border      : 1px solid #CCC;
+  box-shadow  : none;
+  color       : #666;
+  font-size   : modular-scale(-1);
+  font-weight : 400;
+  text-shadow : none;
+
+  &:not(.disabled) {
+    &:hover, &:active, &:focus {
+      background   : #f6f6f6;
+      border-color : #000;
+      box-shadow   : none;
+      color        : #000;
+    }
+  }
+
+  i.fa {
+    margin-right:  5px;
+  }
+
+  &.btn-sm {
+    font-size: modular-scale(-1);
+  }
+
+  &.btn-large {
+    font-size: modular-scale(+1);
+  }
+
+}
+
+.flash-alert {
+  @include flash($alert-color);
+}
+
+.flash-error {
+  @include flash($error-color);
+}
+
+.flash-notice {
+  @include flash($notice-color);
+}
+
+.flash-success {
+  @include flash($success-color);
+}
+
+header.navigation{
+  .navigation-wrapper{
+    button{
+      margin      : 8px 10px 0px 0px;
+    }
+  }
+
+  a.logo{
+    .title{
+      strong{
+        @include margin(0px 10px 0px 0px);
+        font-size : 40px;
+      }
+      font-size   : 20px;
+    }
+  }
+}
+
+button#menu-button{
+  @include border-top-radius(50%);
+  @include border-right-radius(50%);
+  @include border-bottom-radius(50%);
+  @include border-left-radius(50%);
+
+  font-size    : 22px;
+  margin-right : 10px;
+  padding      : 10px;
+}
+
+.container{
+  @include outer-container;
+  @include padding(5px);
+}
+
+.pagination{
+  text-align  : right;
+}
+
+.quit-setlist-play-icon{
+  float       : right;
+}
+
+table{
+  tbody{
+    tr{
+      td{
+        a{
+          color : #555;
+        }
+      }
+    }
+  }
+}

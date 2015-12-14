@@ -1,0 +1,5 @@
+tr.nested-fields
+  td.field
+    = f.collection_select(:song_id, @band.songs.order(:name), :id, :name)
+  td.field.destroy
+    = f.check_box :_destroy

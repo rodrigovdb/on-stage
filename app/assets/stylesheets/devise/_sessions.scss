@@ -1,0 +1,10 @@
+h1.welcome{
+  font-size   : 40px;
+  text-align  : center;
+  margin-top  : 50px;
+}
+
+fieldset.session_fieldset{
+  @include margin(auto);
+  @include size(400px auto);
+}
