@@ -15,6 +15,10 @@ h1 = @setlist.name
   p = @setlist.date.strftime('%d/%m/%Y')
 
 .field
+  h2 Duração total
+  p = duration_to_human @setlist.duration
+
+.field
   h2 Observações
   p = @setlist.notes
 
@@ -23,4 +27,4 @@ fieldset
 
   - @setlist.songs_sorted.each do |song|
     .list_song_to_sort
-      = song.name
+      = song.to_s

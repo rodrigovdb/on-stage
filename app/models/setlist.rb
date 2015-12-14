@@ -31,4 +31,8 @@ class Setlist < ActiveRecord::Base
   def last_song
     songs.joins(:setlist_songs).order('setlist_songs.display_sort DESC').first
   end
+
+  def duration
+    songs.sum(:duration)
+  end
 end

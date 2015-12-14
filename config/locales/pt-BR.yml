@@ -31,7 +31,7 @@ pt-BR:
         name      : Nome
         artist    : Artista
         key       : Tom
-        duration  : Duração (segundos)
+        duration  : Duração
         chords    : Cifra
 
       setlist:

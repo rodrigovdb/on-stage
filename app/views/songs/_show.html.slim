@@ -1,1 +1,14 @@
-| show song 
+.song-infos
+  .song-infos-column
+    h2  = Song.human_attribute_name :key
+    p   = @song.key
+
+  .song-infos-column
+    h2  = Song.human_attribute_name :duration
+    p   = duration_to_human @song.duration
+
+fieldset.show-song
+  legend = Song.human_attribute_name :chords
+  .song-infos-column
+    pre
+      tt = @song.chords

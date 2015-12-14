@@ -1,4 +1,4 @@
-h1 = @song.name
+h1 = "#{@song.artist} - #{@song.name}"
 
 = link_to edit_band_song_path(@band, @song), class: 'button btn-large' do
   i.fa.fa-pencil
