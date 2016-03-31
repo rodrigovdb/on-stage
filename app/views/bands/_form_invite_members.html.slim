@@ -1,0 +1,25 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      i.fa.fa-users
+      |  Adicionar integrante
+
+  .panel-body
+    = form_tag join_members_path do |f|
+      - unless @errors.empty?
+        #info_message.alert.alert-danger
+          h4 = "#{pluralize(@errors.count, "erro")} encontrado(s)"
+          ul
+            - @errors.each do |message|
+              li = message
+
+      .form-group
+        label e-mail
+        = text_field_tag :email, nil, placeholder: 'e-mail', class: 'form-control'
+        = hidden_field_tag  :band_id, @band.id
+
+      .form-group
+        .btn-group
+          = submit_tag 'Salvar', class: 'btn btn-default'
+          a#add_member_cancel.btn.btn-default href="#" onclick="return false;"
+            |  Cancelar

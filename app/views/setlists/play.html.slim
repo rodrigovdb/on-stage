@@ -1,11 +1,29 @@
-.quit-setlist-play-icon
-  = link_to band_setlist_path(@band, @setlist), class: 'button btn-sm' do
-    i.fa.fa-remove
+#play-layout
+  .play-top
+    .quit-setlist-play-icon
+      = link_to band_setlist_path(@band, @setlist), class: 'btn btn-lg btn-default' do
+        i.fa.fa-remove
 
-h1 = @song.name
+    .play-top-nav
+      == render 'play_pagination'
 
-== render 'play_pagination'
+  .play-content
+    h3.page-header
+      = @song
 
-== render 'songs/show'
+    .row
+      .col-lg-3
+        strong
+          = Song.human_attribute_name :key
+        | &nbsp;
+        = @song.key
+      .col-lg-3
+        strong
+          = Song.human_attribute_name :duration
+        | &nbsp;
+        = @song.beauty_duration
 
-== render 'play_pagination'
+    pre
+      tt = @song.chords
+
+    == render 'play_pagination'

@@ -6,7 +6,7 @@ class SetlistsController < ApplicationController
   # GET /setlists
   # GET /setlists.json
   def index
-    @setlists = @band.setlists.order([:date, :name])
+    @setlists = @band.setlists.order([:date, :name]).includes(:songs)
   end
 
   # GET /setlists/1
@@ -16,8 +16,6 @@ class SetlistsController < ApplicationController
 
   def play
     @setlist_song = SetlistSong.where(setlist: @setlist, song_id: params[:song_id]).first
-    debug params
-    debug @setlist_songs
     @song         = @setlist_song.song
 
     render layout: 'play'

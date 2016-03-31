@@ -1,10 +1,12 @@
-header.navigation role="banner"
-  .navigation-wrapper
-    a.logo
-      .title
-        strong OnStage
-        | by rodrigovdb
-
-    - if user_signed_in?
-      .navigation-tools
-        == link_to raw('Sair ' + icon('sign-out')), destroy_user_session_path, { method: :delete, class: 'sign-up' }
+/! Top Menu Items
+ul.nav.navbar-right.top-nav
+  - if user_signed_in?
+    li
+      a
+        i.fa.fa-user
+        | &nbsp;
+        = current_user.email
+    li
+      = link_to destroy_user_session_path, { method: :delete } do
+        i.fa.fa-fw.fa-power-off
+        | Sair

@@ -1,0 +1,15 @@
+.btn-group
+  - if @setlist.first_song.nil?
+    button.btn.btn-default disabled="disabled" title="Não há músicas neste setlist"
+      i.fa.fa-play
+      |  Tocar
+  - else
+    = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn btn-default' do
+      i.fa.fa-play
+      |  Tocar
+  = link_to edit_band_setlist_path(@band, @setlist), class: 'btn btn-default' do
+    i.fa.fa-pencil
+    |  Editar
+  = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-default' do
+    i.fa.fa-trash
+    |  Excluir

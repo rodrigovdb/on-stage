@@ -11,12 +11,12 @@ class Song < ActiveRecord::Base
     response += "#{artist} - " unless artist.nil?
     response += "#{name}"
 
-    unless duration.blank?
-      str = Time.at(duration).utc.strftime('%M:%S')
-
-      response += " (#{str})"
-    end
-
     response
+  end
+
+  def beauty_duration
+    unless duration.blank?
+      Time.at(duration).utc.strftime('%M:%S')
+    end
   end
 end
