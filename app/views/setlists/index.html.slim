@@ -1,18 +1,19 @@
-h1 Listing setlists
+= render 'bands/navbar', active: 'setlists'
 
-table.table-minimal
-  thead
-    tr
-      th Nome (Data)
+h3 Setlists
 
-  tbody
-    - @setlists.each do |setlist|
-      tr
-        td
-          = link_to "#{setlist.name} (#{setlist.date.strftime('%d/%m/%Y')})", band_setlist_path(@band, setlist)
+.list-group
+  - @setlists.each do |setlist|
+      = link_to band_setlist_path(@band, setlist), class: 'list-group-item' do
+        span.badge
+          = "#{setlist.songs.count} música"
+          = setlist.songs.count > 1 ? "s" : ""
+        span.badge
+          = duration_to_human setlist.duration
+        = setlist
 
 br
 
-= link_to new_band_setlist_path(@band), class: 'button' do
+= link_to new_band_setlist_path(@band), class: 'btn btn-default' do
   i.fa.fa-plus
-  | Cadastrar Setlist
+  |  Cadastrar Setlist

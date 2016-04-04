@@ -1,6 +1,4 @@
-def debug(data)
-  data = [data] unless data.is_a?(Array)
-
+def debug(*data)
   puts "\n\n"
   puts '#' * 100
   data.each do |item|

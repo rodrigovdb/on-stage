@@ -1,29 +1,36 @@
-h1 = @band.name
+= render 'navbar', active: 'integrantes'
 
-= link_to band_setlists_path(@band), class: 'button btn-large' do
-  i.fa.fa-list
-  | Setlists
-= link_to band_songs_path(@band), class: 'button btn-large' do
-  i.fa.fa-music
-  | Músicas
+h3 Adicionar / Remover integrante
 
-- if @band.owner == current_user
-  br
-  = link_to edit_band_path(@band), class: 'button btn-large' do
-    i.fa.fa-pencil
-    | Editar
-  = link_to @band, data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'button btn-large' do
-    i.fa.fa-trash
-    | Excluir
+.row
+  .col-lg-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          i.fa.fa-users
+          |  Integrantes
 
-fieldset#members
-  legend Integrantes
-  ul#current_items.default
-    - @band.users.each do |user|
-      li id="member_#{user.id}"
-        = user.email
+      .panel-body
+        #current_items.list-group
+          - @band.users.order(:email).each do |user|
+            .list-group-item id="member_#{user.id}"
+              - if @band.owner == user
+                span.badge title="Admin da banda" data-toggle="tooltip" data-placement="left"
+                  i.fa.fa-star
 
-- if @band.owner == current_user
-  = link_to invite_people_path(@band), class: 'button btn-large' do
-    i.fa.fa-envelope
-    | Convidar integrantes
+              = "#{user.email} "
+              - unless @band.owner == user
+                = link_to remove_member_path(@band, user), method: :delete, class: 'pull-right' do
+                  | &nbsp;
+                  i.fa.fa-trash
+
+        - if @band.owner == current_user
+          .text-right
+            #link
+              a#add_member href='#' onclick='return false;'
+                i.fa.fa-plus
+                |  Adicionar integrante
+
+  #form.col-lg-4 style="display: #{@errors.empty? ? 'none' : 'block'}"
+    = render 'form_invite_members'
+

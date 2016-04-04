@@ -1,0 +1,41 @@
+.row
+  .col-lg-12
+    h1.page-header Página inicial / acesso rápido
+
+.row
+  .col-lg-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          i.fa.fa-users
+          |  Principais bandas
+
+      .panel-body
+        .list-group
+          - @bands.each do |band|
+            = link_to band_path(band), class: 'list-group-item' do
+              span.badge
+                = "#{band.users.count} membro"
+                = band.users.count > 1 ? "s" : ""
+              = band.name
+
+        .text-right
+          = link_to bands_path do
+            | Todas as bandas 
+            i.fa.fa-arrow-circle-right
+
+  .col-lg-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title
+          i.fa.fa-list
+          |  Principais setlists
+
+      .panel-body
+        .list-group
+          - @setlists.each do |setlist|
+            = link_to band_setlist_path(setlist.band, setlist), class: 'list-group-item' do
+              span.badge
+                = "#{setlist.songs.count} música"
+                = setlist.songs.count > 1 ? "s" : ""
+              = setlist

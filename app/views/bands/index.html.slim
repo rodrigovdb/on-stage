@@ -1,17 +1,17 @@
-h1 Minhas bandas
+h3.page-header Minhas bandas
 
-table.table-minimal
-  thead
-    tr
-      th Nome
-
-  tbody
-    - @bands.each do |band|
-      tr
-        td
-          = link_to band.name, band_path(band)
+.list-group
+  - @bands.each do |band|
+    = link_to band_path(band), class: 'list-group-item' do
+      span.badge
+        = "#{band.users.count} membro"
+        = band.users.count > 1 ? "s" : ""
+      span.badge
+        = "#{band.songs.count} música"
+        = band.songs.count > 1 ? "s" : ""
+      = band.name
 
 br
-= link_to new_band_path, class: 'button' do
+= link_to new_band_path, class: 'btn btn-default' do
   i.fa.fa-plus
-  | Cadastrar Banda
+  |  Cadastrar Banda

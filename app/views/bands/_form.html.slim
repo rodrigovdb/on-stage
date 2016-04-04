@@ -1,12 +1,18 @@
-= form_for @band do |f|
-  - if @band.errors.any?
-    #error_explanation.flash-error
-      h2 = "#{pluralize(@band.errors.count, "erro")} encontrado(s)"
-      ul
-        - @band.errors.full_messages.each do |message|
-          li = message
+.panel.panel-default
+  .panel-body
+    = form_for @band do |f|
+      - if @band.errors.any?
+        #error_explanation.alert.alert-danger
+          h2 = "#{pluralize(@band.errors.count, "erro")} encontrado(s)"
+          ul
+            - @band.errors.full_messages.each do |message|
+              li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions = f.submit
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        .btn-group
+          = f.submit 'Salvar', class: 'btn btn-default'
+          = link_to 'Cancelar', @band, class: 'btn btn-default'

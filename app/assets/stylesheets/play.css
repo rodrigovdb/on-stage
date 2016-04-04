@@ -1,0 +1,26 @@
+#play-layout{
+  background-color  : #fff;
+  position          : absolute;
+  top               : 0px;
+  width             : 100%;
+}
+
+#play-layout .play-top{
+  background-color  : #f0f;
+}
+
+#play-layout .quit-setlist-play-icon{
+  float             : left;
+}
+
+#play-layout .play-content{
+  clear             : both;
+}
+
+#play-layout .play-content h3.page-header{
+  padding-top       : 10px;
+}
+
+#play-layout .play-content .song-infos{
+  border            : solid 1px #f0f;
+}

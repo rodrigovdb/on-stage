@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/debug.rb"
-
 class Setlist < ActiveRecord::Base
   belongs_to :band
 
@@ -34,5 +32,9 @@ class Setlist < ActiveRecord::Base
 
   def duration
     songs.sum(:duration)
+  end
+
+  def to_s
+    "#{name} (#{date.strftime('%d/%m/%Y')})"
   end
 end

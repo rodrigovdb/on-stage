@@ -1,36 +1,44 @@
-= form_for [@band, @setlist] do |f|
-  - if @setlist.errors.any?
-    #error_explanation.flash-error
-      h2 = "#{pluralize(@setlist.errors.count, "erro")} encontrado(s)"
-      ul
-        - @setlist.errors.full_messages.each do |message|
-          li = message
+.panel.panel-default
+  .panel-body
+    = form_for [@band, @setlist] do |f|
+      - if @setlist.errors.any?
+        #error_explanation.alert.alert-danger
+          h2 = "#{pluralize(@setlist.errors.count, "erro")} encontrado(s)"
+          ul
+            - @setlist.errors.full_messages.each do |message|
+              li = message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :date
-    = f.date_select :date
-  .field
-    = f.label :notes
-    = f.text_area :notes
+      .form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
 
-  fieldset
-    legend Músicas
-    table.table.nested-form
-      thead
-        tr
-          th Nome
-          th.destroy Apagar?
-      tbody#setlist_songs
-        = f.fields_for :setlist_songs, @setlist.setlist_songs.order(:display_sort) do |setlist_song|
-          = render 'setlist_song_fields', f: setlist_song
-      tfoot
-        tr
-          td.links.right-align colspan="2"
-            = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'button' } do
-              = icon 'plus'
-              | Adicionar Música
+      .form-group
+        = f.label :date
+        = f.date_select :date, class: 'form-control'
 
-  .actions = f.submit
+      .form-group
+        = f.label :notes
+        = f.text_area :notes, class: 'form-control'
+
+      .panel.panel-default
+        .panel-heading
+          i.fa.fa-music
+          |  Músicas
+        .panel-body
+          table.table.table-bordered.table-hover.table-striped width="100%"
+            thead
+              tr
+                th Nome
+                th.destroy Apagar?
+            tbody#setlist_songs
+              = f.fields_for :setlist_songs, @setlist.setlist_songs.order(:display_sort) do |setlist_song|
+                = render 'setlist_song_fields', f: setlist_song
+
+          = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'btn btn-default' } do
+            i.fa.fa-plus
+            |  Adicionar Música
+
+      .form-group
+        .btn-group
+          = f.submit 'Salvar', class: 'btn btn-default'
+          = link_to 'Cancelar', band_setlists_path(@band), class: 'btn btn-default'

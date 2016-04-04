@@ -1,3 +1,5 @@
+require "#{Rails.root}/lib/debug.rb"
+
 class BandsController < ApplicationController
   before_action :set_band, only: [:show, :edit, :update, :destroy, :invite_people, :join_members, :remove_member]
   before_action :authenticate_user!
@@ -6,12 +8,13 @@ class BandsController < ApplicationController
   # GET /bands
   # GET /bands.json
   def index
-    @bands  = current_user.associate_bands
+    @bands    = current_user.associate_bands.includes(:users, :songs).order('name asc')
   end
 
   # GET /bands/1
   # GET /bands/1.json
   def show
+    @errors = []
   end
 
   # GET /bands/new
@@ -27,29 +30,38 @@ class BandsController < ApplicationController
   end
 
   def join_members
-    email = params[:email]
-    user  = User.find_by_email email
+    user  = User.find_by_email params[:email]
 
-    return render json: { status: false, message: "Usuário #{email} não encontrado." } unless user
-    return render json: { status: false, message: "Usuário #{email} já pertence à banda #{@band.name}" } if @band.user_belongs? user
+    @errors = []
+    @errors << "Usuário #{params[:email]} não existe" unless user
+    @errors << "Usuário #{params[:email]} já faz parte da banda" if @band.users.include? user
 
-    @band.users << user
+    if @errors.empty?
+      @band.users << user
 
-    render json: { status: true, user: { id: user.id, name: user.email } }
+      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
+    else
+      render :show
+    end
   end
 
   def remove_member
     user_id = params[:member]
     user    = User.find user_id
 
-    return render json: { status: false, message: "Usuário #{user_id} não encontrado." } unless user
-    return render json: { status: false, message: "Usuário #{email} não pertence à banda #{@band.name}" } unless @band.user_belongs? user
-    return render json: { status: false, message: "Não é possível excluir o criador da banda" } if @band.owner == user
+    @errors = []
+    @errors << "Usuário não existe" unless user
+    @errors << "Usuário #{user.email} não pertence à banda #{@band.name}" unless @band.users.include? user
+    @errors << "Não é possível excluir o criador da banda" if @band.owner == user
 
-    item  = BandUser.where(band: @band, user: user).first
-    item.destroy
+    if @errors.empty?
+      item  = BandUser.where(band: @band, user: user).first
+      item.destroy
 
-    render json: { status: true, user_id: user_id  }
+      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
+    else
+      render :show
+    end
   end
 
   # POST /bands
