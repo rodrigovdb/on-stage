@@ -4,19 +4,17 @@ class Song < ActiveRecord::Base
   has_many :setlist_songs
   has_many :setlists, through: :setlist_songs
 
-  validates :name,  presence: true, uniqueness: { scope: :band, message: 'Música já cadastrada' }
+  validates :name, presence: true, uniqueness: { scope: :band, message: 'Música já cadastrada' }
 
   def to_s
-    response  = ""
+    response  = ''
     response += "#{artist} - " unless artist.nil?
-    response += "#{name}"
+    response += name
 
     response
   end
 
   def beauty_duration
-    unless duration.blank?
-      Time.at(duration).utc.strftime('%M:%S')
-    end
+    Time.at(duration).utc.strftime('%M:%S') unless duration.blank?
   end
 end

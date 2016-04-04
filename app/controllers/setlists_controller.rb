@@ -36,28 +36,20 @@ class SetlistsController < ApplicationController
     @setlist      = Setlist.new(setlist_params)
     @setlist.band = @band
 
-    respond_to do |format|
-      if @setlist.save
-        format.html { redirect_to band_setlists_path(@band), notice: 'Setlist cadastrado com sucesso.' }
-        format.json { render :show, status: :created, location: @setlist }
-      else
-        format.html { render :new }
-        format.json { render json: @setlist.errors, status: :unprocessable_entity }
-      end
+    if @setlist.save
+      redirect_to band_setlists_path(@band), notice: 'Setlist cadastrado com sucesso.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /setlists/1
   # PATCH/PUT /setlists/1.json
   def update
-    respond_to do |format|
-      if @setlist.update(setlist_params)
-        format.html { redirect_to band_setlists_path(@band), notice: 'Setlist atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @setlist }
-      else
-        format.html { render :edit }
-        format.json { render json: @setlist.errors, status: :unprocessable_entity }
-      end
+    if @setlist.update(setlist_params)
+      redirect_to band_setlists_path(@band), notice: 'Setlist atualizado com sucesso.'
+    else
+      render :edit
     end
   end
 
@@ -72,13 +64,14 @@ class SetlistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_setlist
-      @setlist = Setlist.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def setlist_params
-      params.require(:setlist).permit(:band_id, :name, :date, :notes, setlist_songs_attributes: [:id, :song_id, :_destroy])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_setlist
+    @setlist = Setlist.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def setlist_params
+    params.require(:setlist).permit(:band_id, :name, :date, :notes, setlist_songs_attributes: [:id, :song_id, :_destroy])
+  end
 end

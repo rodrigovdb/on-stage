@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
+VAGRANTFILE_API_VERSION = '2'.freeze
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -10,18 +10,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = 'ubuntu/trusty64'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   # config.vm.box_check_update = false
-  config.vm.provision "shell", path: './postinstall.sh'
+  config.vm.provision 'shell', path: './postinstall.sh'
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  # accessing 'localhost:8080' will access port 80 on the guest machine.
+  # config.vm.network 'forwarded_port', guest: 80, host: 8080
   config.vm.network 'forwarded_port', host: 3001, guest: 3000
   # config.vm.network 'forwarded_port', host: 5432, guest: 5432
   config.vm.network 'forwarded_port', host: 8181, guest: 8080
@@ -29,12 +29,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  #config.vm.network "private_network", ip: "192.168.33.11"
+  # config.vm.network 'private_network', ip: '192.168.33.11'
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network "public_network"
+  config.vm.network 'public_network'
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -46,24 +46,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "/home/rodrigo/sandbox", "/home/vagrant/sandbox"
+  # config.vm.synced_folder '../data', '/vagrant_data'
+  config.vm.synced_folder '/home/rodrigo/sandbox', '/home/vagrant/sandbox'
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
+  config.vm.provider 'virtualbox' do |vb|
     # Don't boot with headless mode
     # vb.gui = true
 
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
-    vb.customize ["modifyvm", :id, "--name", "OnStage (Ubuntu 14.04 64 bits)"]
+    vb.customize ['modifyvm', :id, '--memory', '2048']
+    vb.customize ['modifyvm', :id, '--name', 'OnStage (Ubuntu 14.04 64 bits)']
 
     vb.customize [
-      "setextradata", :id,
-      "VBoxInternal/Devices/ahci/0/LUN#[0]/Config/IgnoreFlush", "1"
+      'setextradata', :id,
+      'VBoxInternal/Devices/ahci/0/LUN#[0]/Config/IgnoreFlush', '1'
     ]
   end
   #
@@ -74,16 +74,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # automatically installed. For example, configure the host as a
   # policy server and optionally a policy file to run:
   #
-  # config.vm.provision "cfengine" do |cf|
+  # config.vm.provision 'cfengine' do |cf|
   #   cf.am_policy_hub = true
-  #   # cf.run_file = "motd.cf"
+  #   # cf.run_file = 'motd.cf'
   # end
   #
   # You can also configure and bootstrap a client to an existing
   # policy server:
   #
-  # config.vm.provision "cfengine" do |cf|
-  #   cf.policy_server_address = "10.0.2.15"
+  # config.vm.provision 'cfengine' do |cf|
+  #   cf.policy_server_address = '10.0.2.15'
   # end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
@@ -91,24 +91,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # You will need to create the manifests directory and a manifest in
   # the file default.pp in the manifests_path directory.
   #
-  # config.vm.provision "puppet" do |puppet|
-  #   puppet.manifests_path = "manifests"
-  #   puppet.manifest_file  = "site.pp"
+  # config.vm.provision 'puppet' do |puppet|
+  #   puppet.manifests_path = 'manifests'
+  #   puppet.manifest_file  = 'site.pp'
   # end
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  # config.vm.provision "chef_solo" do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
+  # config.vm.provision 'chef_solo' do |chef|
+  #   chef.cookbooks_path = '../my-recipes/cookbooks'
+  #   chef.roles_path = '../my-recipes/roles'
+  #   chef.data_bags_path = '../my-recipes/data_bags'
+  #   chef.add_recipe 'mysql'
+  #   chef.add_role 'web'
   #
   #   # You may also specify custom JSON attributes:
-  #   chef.json = { :mysql_password => "foo" }
+  #   chef.json = { :mysql_password => 'foo' }
   # end
 
   # Enable provisioning with chef server, specifying the chef server URL,
@@ -121,9 +121,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # HTTP instead of HTTPS depending on your configuration. Also change the
   # validation key to validation.pem.
   #
-  # config.vm.provision "chef_client" do |chef|
-  #   chef.chef_server_url = "https://api.opscode.com/organizations/ORGNAME"
-  #   chef.validation_key_path = "ORGNAME-validator.pem"
+  # config.vm.provision 'chef_client' do |chef|
+  #   chef.chef_server_url = 'https://api.opscode.com/organizations/ORGNAME'
+  #   chef.validation_key_path = 'ORGNAME-validator.pem'
   # end
   #
   # If you're using the Opscode platform, your validator client is
@@ -132,5 +132,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # If you have your own Chef Server, the default validation client name is
   # chef-validator, unless you changed the configuration.
   #
-  #   chef.validation_client_name = "ORGNAME-validator"
+  #   chef.validation_client_name = 'ORGNAME-validator'
 end
