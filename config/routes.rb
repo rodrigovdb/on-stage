@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  resources :bands, path: 'minhas-bandas',  path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' } do
+  resources :bands, path: 'minhas-bandas', path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' } do
     resources :songs,     path: 'minhas-musicas', path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }
     resources :setlists,  path: 'meus-setlists',  path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' } do
       collection do
-        get '/:id/play/:song_id', to: 'setlists#play',  as: :play
+        get '/:id/play/:song_id', to: 'setlists#play', as: :play
       end
     end
   end
@@ -20,6 +20,5 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'bands#index'
   root 'main#index'
 end

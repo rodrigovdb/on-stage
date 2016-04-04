@@ -2,24 +2,24 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
-gem 'rails',              '4.2.4'
+gem 'rails', '4.2.4'
 gem 'dotenv-rails'
 gem 'rails-i18n'
 gem 'puma'
-gem 'sass-rails',         '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
-gem 'uglifier',           '>= 1.3.0'
-gem 'coffee-rails',       '~> 4.1.0'
-gem 'therubyracer',       platforms: :ruby
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder',           '~> 2.0'
+gem 'jbuilder', '~> 2.0'
 gem 'font-awesome-rails'
 
 gem 'unicorn'
 
 # Bootstrap
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 
 # Authentication
 gem 'devise'
@@ -31,6 +31,9 @@ gem 'cocoon'
 # Db stuffs
 gem 'pg'
 gem 'seed_dump'
+
+# Policies
+gem 'rubocop'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
