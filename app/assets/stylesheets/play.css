@@ -1,7 +1,7 @@
 #play-layout{
   background-color  : #fff;
   position          : absolute;
-  top               : 0px;
+  top               : 0;
   width             : 100%;
 }
 
@@ -17,10 +17,6 @@
   clear             : both;
 }
 
-#play-layout .play-content h3.page-header{
+.page-header{
   padding-top       : 10px;
-}
-
-#play-layout .play-content .song-infos{
-  border            : solid 1px #f0f;
 }
