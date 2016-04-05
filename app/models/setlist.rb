@@ -19,7 +19,9 @@ class Setlist < ActiveRecord::Base
   end
 
   def songs_sorted
-    songs.joins(:setlist_songs).order('setlist_songs.display_sort')
+    Song.joins(:setlist_songs)
+        .where('setlist_songs.setlist_id = ?', id)
+        .order('setlist_songs.display_sort')
   end
 
   def first_song
@@ -35,6 +37,9 @@ class Setlist < ActiveRecord::Base
   end
 
   def to_s
-    "#{name} (#{date.strftime('%d/%m/%Y')})"
+    response  = name
+    response += "(#{date.strftime('%d/%m/%Y')})" unless date.blank?
+
+    response
   end
 end

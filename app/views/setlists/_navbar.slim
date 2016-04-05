@@ -7,9 +7,29 @@
     = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn btn-default' do
       i.fa.fa-play
       |  Tocar
+  button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button" 
+    i.fa.fa-copy
+    |  Copiar
   = link_to edit_band_setlist_path(@band, @setlist), class: 'btn btn-default' do
     i.fa.fa-pencil
     |  Editar
   = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-default' do
     i.fa.fa-trash
     |  Excluir
+
+#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1" 
+  .modal-dialog role="document" 
+    .modal-content
+      .modal-header
+        button.close aria-label="Fechar" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  &times;
+        h4#form_copy_setlistLabel.modal-title Copiar setlist
+      .modal-body
+        = form_tag clone_band_setlists_path(@band, @setlist) do |f|
+          .form-group
+            label Nome
+            = text_field_tag :name, nil, placeholder: 'name', class: 'form-control'
+
+          .modal-footer
+            button.btn.btn-default data-dismiss="modal" type="button"  Cancelar
+            button.btn.btn-primary type="submit"  Copiar

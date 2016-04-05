@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     resources :songs,     path: 'minhas-musicas', path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }
     resources :setlists,  path: 'meus-setlists',  path_names: { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' } do
       collection do
-        get '/:id/play/:song_id', to: 'setlists#play', as: :play
+        get   '/:id/play/:song_id', to: 'setlists#play', as: :play
+        post  '/:id/copiar',        to: 'setlists#copy', as: :clone
       end
     end
   end
