@@ -11,11 +11,7 @@
  * file per style scope.
  *
  *= require font-awesome
+ *= require bootstrap.min.css
+ *= require sb-admin.css
  *= require_tree .
- *= require_self
  */
-
-#login{
-  width   : 400px;
-  margin  : auto;
-}
