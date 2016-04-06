@@ -63,7 +63,26 @@ class SetlistsController < ApplicationController
     end
   end
 
+  def copy
+    @band         = Band.find params[:band_id]
+    base_setlist  = Setlist.find params[:id]
+    @setlist      = Setlist.new band: @band
+
+    copy_setlist base_setlist
+
+    if @setlist.save
+      redirect_to band_setlist_path(@band, @setlist), notice: 'Setlist copiado com sucesso.'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  def copy_setlist(base_setlist)
+    @setlist.name = params[:name].blank? ? 'Novo setlist (nome não informado)' : params[:name]
+    base_setlist.songs_sorted.each { |song| @setlist.songs << song }
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_setlist

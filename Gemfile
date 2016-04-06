@@ -32,9 +32,6 @@ gem 'cocoon'
 gem 'pg'
 gem 'seed_dump'
 
-# Policies
-gem 'rubocop'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -55,4 +52,6 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   gem 'racksh'
+
+  gem 'rubocop'
 end
