@@ -48,9 +48,9 @@ su -c '/home/vagrant/.rvm/bin/rvm all do gem install bundle' vagrant
 #su -c "echo 'CREATE DATABASE sesai-pdsi' | mysql -u root -p'rapadura'"
 
 # Copy postgresql config files to proper dir
-#DIR="$(pwd)/sandbox/sesai-pdsi"
-#sudo su -c "cp ${DIR}/samples/pg_hba.conf /etc/postgresql/9.3/main/" vagrant
-#sudo su -c "cp ${DIR}/samples/postgresql.conf /etc/postgresql/9.3/main/" vagrant
+DIR="$(pwd)/sandbox/rodrigovdb/on-stage"
+sudo su -c "cp ${DIR}/samples/pg_hba.conf /etc/postgresql/9.3/main/" vagrant
+sudo su -c "cp ${DIR}/samples/postgresql.conf /etc/postgresql/9.3/main/" vagrant
 
 # Create postgresql user and database
 sudo su - postgres -c "echo \"CREATE USER desenv WITH SUPERUSER CREATEDB CREATEROLE ENCRYPTED PASSWORD 'rapadura';\" |psql -U postgres -d postgres" vagrant
