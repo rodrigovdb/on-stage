@@ -18,8 +18,8 @@ gem 'font-awesome-rails'
 
 gem 'unicorn'
 
-# Bootstrap
-gem 'twitter-bootstrap-rails'
+# Material design
+gem 'material_design_lite-rails', '~> 1.3'
 
 # Authentication
 gem 'devise'
