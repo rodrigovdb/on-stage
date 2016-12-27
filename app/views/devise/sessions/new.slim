@@ -1,26 +1,33 @@
-#login
-  h3 OnStage - Login
-  .mdl-card-wide.mdl-card.mdl-shadow--2dp.box-login
-    /.mdl-card__title
-      h2.mdl-card__title-text
-        | Login
-    .mdl-card__supporting-text
-      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-          = f.email_field :email, autofocus: true, class: 'mdl-textfield__input'
-          = f.label :email, class: 'mdl-textfield__label'
+.row
+  .col.s12.m3.l2
+  .col.s12.m6.l8
+    h3 .: Login
 
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-          = f.password_field :password, autocomplete: 'off', class: 'mdl-textfield__input'
-          = f.label :password, class: 'mdl-textfield__label'
+    .card
+      .card-content.box-login
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
+          .input-field
+            = f.email_field :email, autofocus: true
+            = f.label :email
 
-        .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-          = f.submit "Entrar", class: 'mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+          .input-field
+            = f.password_field :password, autocomplete: 'off'
+            = f.label :password
 
-        .mdl-card__actions.mdl-card--border
-          = link_to "Cadastrar-se", new_registration_path(resource_name)
-          .mdl-layout-spacer
-          = link_to "Esqueceu sua senha?", new_password_path(resource_name)
-            /| ou
-            /.form-group
-              /= render "devise/shared/links"
+          = f.submit "Entrar", class: 'btn'
+
+          // Link to "More options"
+          /span.card-title.activator
+            i.material-icons.right more_vert
+
+      .card-action
+        = render "devise/shared/links"
+
+      .card-reveal
+        span.card-title
+          | Mais opções
+          i.material-icons.right close
+        = link_to "Cadastrar-se", new_registration_path(resource_name)
+        = link_to "Esqueceu sua senha?", new_password_path(resource_name)
+        /= render "devise/shared/links"
+  .col.s12.m3.l8

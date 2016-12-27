@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require material
+//= require materialize
 //= require cocoon
 //= require_tree .

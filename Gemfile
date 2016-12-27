@@ -19,7 +19,8 @@ gem 'font-awesome-rails'
 gem 'unicorn'
 
 # Material design
-gem 'material_design_lite-rails', '~> 1.3'
+gem 'materialize-sass'
+gem 'material_icons'
 
 # Authentication
 gem 'devise'

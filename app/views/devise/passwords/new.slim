@@ -1,19 +1,18 @@
-h1.welcome On Stage
+.row
+  .col.s12.m3.l2
+  .col.s12.m6.l8
+    h3 Esqueceu a senha?
 
-fieldset.session_fieldset
-  h2 Esqueceu sua senha?
+    .card
+      .card-content.box-login
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+   
+          .input-field
+            = f.email_field :email, autofocus: true
+            = f.label       :email
 
-  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-    = devise_error_messages!
+          = f.submit "Envie-me instruções!", class: 'btn'
 
-    .field
-      = f.label       :email
-      br
-      = f.email_field :email, autofocus: true, placeholder: 'e-mail'
-
-    .actions
-      = f.submit "Envie-me instruções!"
-
-  | ou
-  br
-  = render "devise/shared/links"
+      .card-action
+        = render "devise/shared/links"
