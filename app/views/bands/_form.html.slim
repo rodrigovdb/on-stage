@@ -3,16 +3,16 @@
     = form_for @band do |f|
       - if @band.errors.any?
         #error_explanation.alert.alert-danger
-          h2 = "#{pluralize(@band.errors.count, "erro")} encontrado(s)"
+          h5 = "#{pluralize(@band.errors.count, "erro")} encontrado(s)"
           ul
             - @band.errors.full_messages.each do |message|
               li = message
 
-      .form-group
+      .input-field
         = f.label :name
         = f.text_field :name, class: 'form-control'
 
-      .form-group
+      .input-field
         .btn-group
-          = f.submit 'Salvar', class: 'btn btn-default'
-          = link_to 'Cancelar', @band, class: 'btn btn-default'
+          = f.submit 'Salvar', class: 'btn'
+          = link_to 'Cancelar', @band, class: 'btn'
