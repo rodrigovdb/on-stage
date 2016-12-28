@@ -1,41 +1,36 @@
-.row
-  .col-lg-12
-    h1.page-header Página inicial / acesso rápido
+h3 .: Página inicial / acesso rápido
 
 .row
-  .col-lg-4
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title
-          i.fa.fa-users
-          |  Principais bandas
+  .col.s12.m6.l2
+    h4 .: SetLists
 
-      .panel-body
-        .list-group
+    .card
+      .card-content
+        .collection
+          - @setlists.each do |setlist|
+            = link_to band_setlist_path(setlist.band, setlist), class: 'collection-item' do
+              span.badge
+                = "#{setlist.songs.count} música"
+                = setlist.songs.count > 1 ? "s" : ""
+              = setlist
+          - if @setlists.empty?
+            .collection-item
+              | Não há setlists cadastrados
+
+  .col.s12.m6.l2
+    h4 .: Bandas recentes
+
+    .card
+      .card-content
+        .collection
           - @bands.each do |band|
-            = link_to band_path(band), class: 'list-group-item' do
+            = link_to band_path(band), class: 'collection-item' do
               span.badge
                 = "#{band.users.count} membro"
                 = band.users.count > 1 ? "s" : ""
               = band.name
 
-        .text-right
-          = link_to bands_path do
-            | Todas as bandas 
-            i.fa.fa-arrow-circle-right
-
-  .col-lg-4
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title
-          i.fa.fa-list
-          |  Principais setlists
-
-      .panel-body
-        .list-group
-          - @setlists.each do |setlist|
-            = link_to band_setlist_path(setlist.band, setlist), class: 'list-group-item' do
-              span.badge
-                = "#{setlist.songs.count} música"
-                = setlist.songs.count > 1 ? "s" : ""
-              = setlist
+      .card-action
+        = link_to bands_path do
+          | Todas as bandas
+          i.fa.fa-arrow-circle-right
