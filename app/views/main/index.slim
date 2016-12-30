@@ -1,27 +1,24 @@
-h3 .: Página inicial / acesso rápido
-
 .row
   .col.s12.m6.l2
-    h4 .: SetLists
+    - unless @setlists.empty?
+        .card-content
+        .card
+          .card-title .: Setlists
 
-    .card
-      .card-content
-        .collection
-          - @setlists.each do |setlist|
-            = link_to band_setlist_path(setlist.band, setlist), class: 'collection-item' do
-              span.badge
-                = "#{setlist.songs.count} música"
-                = setlist.songs.count > 1 ? "s" : ""
-              = setlist
-          - if @setlists.empty?
-            .collection-item
-              | Não há setlists cadastrados
+          .collection
+            - @setlists.each do |setlist|
+              = link_to band_setlist_path(setlist.band, setlist), class: 'collection-item' do
+                span.badge
+                  = "#{setlist.songs.count} música"
+                  = setlist.songs.count > 1 ? "s" : ""
+                = setlist
 
   .col.s12.m6.l2
-    h4 .: Bandas recentes
-
     .card
       .card-content
+        .card-title
+          | Bandas recentes
+
         .collection
           - @bands.each do |band|
             = link_to band_path(band), class: 'collection-item' do
