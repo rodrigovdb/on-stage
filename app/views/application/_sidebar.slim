@@ -27,11 +27,14 @@ ul#nav-mobile.side-nav.fixed style=("transform: translateX(0px);")
       | Todas as bandas
       i.material-icons supervisor_account
     - current_user.associate_bands.each do |band|
-      li
-        = link_to band_path(band)
-          = band.name
-          i.material-icons visibility
-
+      li.no-padding
+        ul.collapsible.collapsible-accordion
+          li
+            a.collapsible-header
+              = band.name
+              i.material-icons arrow_drop_down
+            .collapsible-body
+              = render 'bands/navbar', active: 'integrantes'
   li
     .divider
   li

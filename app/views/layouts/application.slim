@@ -25,4 +25,5 @@ html ang="#{I18n.locale}"
     #content.container
       = yield
 
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    / This piece of shit breaks dropdown
+    /= javascript_include_tag 'application', 'data-turbolinks-track' => true

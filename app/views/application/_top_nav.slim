@@ -3,3 +3,8 @@ nav
     a.brand-logo href="#" OnStage
     a.button-collapse.top-nav.full.hide-on-large-only data-activates="nav-mobile" href="#"
       i.material-icons menu
+
+- if @band
+  nav
+    .nav-wrapper.container
+      = render 'bands/navbar', active: 'integrantes'
