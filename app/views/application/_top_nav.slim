@@ -7,4 +7,4 @@ nav
 - if @band
   nav
     .nav-wrapper.container
-      = render 'bands/navbar', active: 'integrantes'
+      = render 'bands/navbar', band: @band, align: 'right'

@@ -1,34 +1,32 @@
-h3 Adicionar / Remover integrante
+h3 = @band.name
 
 .row
-  .col-lg-4
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title
-          i.fa.fa-users
-          |  Integrantes
+  .col.s12.m6.l6
+    .card
+      .card-content
+        .card-title
+          | Pessoas
 
-      .panel-body
-        #current_items.list-group
+        .collection
           - @band.users.order(:email).each do |user|
-            .list-group-item id="member_#{user.id}"
-              - if @band.owner == user
-                span.badge title="Admin da banda" data-toggle="tooltip" data-placement="left"
-                  i.fa.fa-star
-
+            .collection-item href="#" id="member_#{user.id}"
               = "#{user.email} "
-              - unless @band.owner == user
-                = link_to remove_member_path(@band, user), method: :delete, class: 'pull-right' do
-                  | &nbsp;
-                  i.fa.fa-trash
+              - if @band.owner == user
+                span.badge
+                  i.material-icons star
+              - elsif current_user == @band.owner
+                span.badge
+                  = link_to remove_member_path(@band, user), data: { confirm: 'Está certo disto?' }, method: :delete do
+                    i.material-icons delete
 
+      .card-reveal
+        span.card-title.grey-text.text-darken-4
+          | Adicionar pessoa
+          i.material-icons.right close
+        #form
+          = render 'form_invite_members'
+
+      .card-action
         - if @band.owner == current_user
-          .text-right
-            #link
-              a#add_member href='#' onclick='return false;'
-                i.fa.fa-plus
-                |  Adicionar integrante
-
-  #form.col-lg-4 style="display: #{@errors.empty? ? 'none' : 'block'}"
-    = render 'form_invite_members'
-
+          a#add_member.activator href='#'
+            |  Adicionar pessoa

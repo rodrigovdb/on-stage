@@ -1,25 +1,16 @@
-ul
+ul class="#{defined?(align) ? align : ''}"
   li
-    = link_to 'Pessoas', band_path(@band)
+    = link_to 'Pessoas', band_path(band)
   li
-    = link_to 'Setlists', band_setlists_path(@band)
+    = link_to 'Setlists', band_setlists_path(band)
   li
-    = link_to 'Músicas', band_songs_path(@band)
-  - if @band.owner == current_user
-    li
-      = link_to 'Editar', edit_band_path(@band)
-    li
-      = link_to 'Excluir', @band, data: { confirm: 'ATENÇÃO: A banda, suas músicas e setlists serão excluídos! Esta operação é irreversível! Deseja continuar?' }, method: :delete
+    = link_to 'Músicas', band_songs_path(band)
 
-/ul
-  li
-    = link_to 'Pessoas', band_path(@band)
-  li
-    = link_to 'Setlists', band_setlists_path(@band)
-  li
-    = link_to 'Músicas', band_songs_path(@band)
-  - if @band.owner == current_user
+  - if band.owner == current_user
     li
-      = link_to 'Editar', edit_band_path(@band)
+      = link_to 'Editar', edit_band_path(band)
     li
-      = link_to 'Excluir', @band, data: { confirm: 'ATENÇÃO: A banda, suas músicas e setlists serão excluídos! Esta operação é irreversível! Deseja continuar?' }, method: :delete
+      = link_to 'Excluir', band, data: { confirm: 'ATENÇÃO: A banda, suas músicas e setlists serão excluídos! Esta operação é irreversível! Deseja continuar?' }, method: :delete
+
+  li
+    .divider
