@@ -1,9 +1,16 @@
-h3 = @song
+.page-title-with-action-btn
+  h3 = @song
 
-.right
-  = link_to edit_band_song_path(@band, @song), class: 'btn btn-floating btn-large' do
-    i.material-icons mode_edit
-  = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-floating btn-large' do
-    i.material-icons delete
+  .fixed-action-btn.horizontal style=("position: absolute; display: inline-block; right: 24px;") 
+    a.btn-floating.btn-large.red
+      i.large.material-icons mode_edit
+    ul
+      li
+        = link_to edit_band_song_path(@band, @song), class: 'btn-floating' do
+          i.material-icons mode_edit
+
+      li
+        = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating' do
+          i.material-icons delete
 
 == render 'show'
