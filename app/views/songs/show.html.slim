@@ -1,16 +1,9 @@
-= render 'bands/navbar', active: 'musicas'
+h3 = @song
 
-h3.page-header = "#{@song.artist} - #{@song.name}"
-
-.btn-group
-  a.btn.btn-default href="javascript:window.history.go(-1)"
-    i.fa.fa-arrow-left
-    | Voltar
-  = link_to edit_band_song_path(@band, @song), class: 'btn btn-default' do
-    i.fa.fa-pencil
-    | Editar
-  = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-default' do
-    i.fa.fa-trash
-    | Excluir
+.right
+  = link_to edit_band_song_path(@band, @song), class: 'btn btn-floating btn-large' do
+    i.material-icons mode_edit
+  = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-floating btn-large' do
+    i.material-icons delete
 
 == render 'show'
