@@ -2,8 +2,9 @@ tr
   td.input-field
     .col.s12
       = f.collection_select(:song_id, @band.songs.order(:name), :id, :to_s, {}, { class: '' })
-  td.input-field
+  td.input-field.center
     = f.check_box :_destroy
+    = f.label :_destroy, 'Apagar'
 
 javascript:
   $(document).ready(function() {
