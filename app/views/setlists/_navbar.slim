@@ -1,4 +1,28 @@
-.btn-group
+.fixed-action-btn.horizontal style=("position: absolute; display: inline-block; right: 24px;") 
+  a.btn-floating.btn-large.red
+    i.large.material-icons settings
+  ul
+    li.tooltipped data-tooltip="Play, tocar setlist"
+      - if @setlist.first_song.nil?
+        a.btn-floating.disabled
+          i.material-icons play_arrow
+      - else
+        = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating' do
+          i.material-icons play_arrow
+    /li
+      button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button" 
+        i.fa.fa-copy
+        |  Copiar
+    li.tooltipped data-tooltip="Editar setlist"
+      = link_to edit_band_setlist_path(@band, @setlist), class: 'btn-floating' do
+        i.material-icons mode_edit
+
+    li.tooltipped data-tooltip="Excluir setlist"
+      = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating' do
+        i.material-icons delete
+
+
+/.btn-group
   - if @setlist.first_song.nil?
     button.btn.btn-default disabled="disabled" title="Não há músicas neste setlist"
       i.fa.fa-play
@@ -17,7 +41,7 @@
     i.fa.fa-trash
     |  Excluir
 
-#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1" 
+/#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1" 
   .modal-dialog role="document" 
     .modal-content
       .modal-header

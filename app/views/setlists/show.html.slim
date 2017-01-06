@@ -1,16 +1,34 @@
-h3.page-header = @setlist
+.page-title-with-action-btn
+  h3 = @band.name
+  = render 'navbar'
+h4 = @setlist
 
-= render 'navbar'
-
-.field
-  h2 Duração total
+.input-field
+  p
+    b Duração total
   p = duration_to_human @setlist.duration
 
-.field
-  h2 Observações
+.input-field
+  p
+    b Observações
   p = @setlist.notes
 
-.panel.panel-default
+.card
+  .card-content
+    .card-title Músicas
+
+    .collection.songs-list
+      - @setlist.songs_sorted.each do |song|
+        = link_to play_band_setlists_path(@band, @setlist, song), class: 'collection-item' do
+          i.material-icons.tooltipped data-tooltip="Play, iniciar por esta música"
+            | play_circle_outline
+          | &nbsp;
+          span.songs-list-label
+            = song
+          span.badge
+            = song.beauty_duration
+
+/.panel.panel-default
   .panel-heading
     i.fa.fa-music
     |  Músicas
