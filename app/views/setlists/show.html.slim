@@ -27,16 +27,3 @@ h4 = @setlist
             = song
           span.badge
             = song.beauty_duration
-
-/.panel.panel-default
-  .panel-heading
-    i.fa.fa-music
-    |  Músicas
-  .panel-body
-    .list-group
-      - @setlist.songs_sorted.each do |song|
-        = link_to play_band_setlists_path(@band, @setlist, song), class: 'list-group-item' do
-          span.badge
-            = song.beauty_duration
-          i.fa.fa-play
-          = " #{song.to_s}"

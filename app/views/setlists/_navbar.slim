@@ -7,53 +7,30 @@
         a.btn-floating.disabled
           i.material-icons play_arrow
       - else
-        = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating' do
+        = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating waves-effect waves-light' do
           i.material-icons play_arrow
-    /li
-      button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
+    li
+      /button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
+      a.btn-floating.waves-effect.waves-light href="#modal1"
         i.fa.fa-copy
         |  Copiar
     li.tooltipped data-tooltip="Editar setlist"
-      = link_to edit_band_setlist_path(@band, @setlist), class: 'btn-floating' do
+      = link_to edit_band_setlist_path(@band, @setlist), class: 'btn-floating waves-effect waves-light' do
         i.material-icons mode_edit
 
     li.tooltipped data-tooltip="Excluir setlist"
-      = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating' do
+      = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating waves-effect waves-light' do
         i.material-icons delete
 
-
-/.btn-group
-  - if @setlist.first_song.nil?
-    button.btn.btn-default disabled="disabled" title="Não há músicas neste setlist"
-      i.fa.fa-play
-      |  Tocar
-  - else
-    = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn btn-default' do
-      i.fa.fa-play
-      |  Tocar
-  button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
-    i.fa.fa-copy
-    |  Copiar
-  = link_to edit_band_setlist_path(@band, @setlist), class: 'btn btn-default' do
-    i.fa.fa-pencil
-    |  Editar
-  = link_to band_setlist_path(@band, @setlist), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-default' do
-    i.fa.fa-trash
-    |  Excluir
-
-/#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1"
+#modal1.modal
   .modal-dialog role="document"
     .modal-content
-      .modal-header
-        button.close aria-label="Fechar" data-dismiss="modal" type="button"
-          span aria-hidden="true"  &times;
-        h4#form_copy_setlistLabel.modal-title Copiar setlist
+      h4 Copiar setlist
       .modal-body
         = form_tag clone_band_setlists_path(@band, @setlist) do |f|
-          .form-group
-            label Nome
-            = text_field_tag :name, nil, placeholder: 'name', class: 'form-control'
+          .input-field
+            label Nome do novo setlist
+            = text_field_tag :name
 
-          .modal-footer
-            button.btn.btn-default data-dismiss="modal" type="button"  Cancelar
-            button.btn.btn-primary type="submit"  Copiar
+          button.btn type="button" onclick="$('#modal1').modal('close')"  Cancelar
+          button.btn type="submit" Copiar
