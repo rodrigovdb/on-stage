@@ -1,5 +1,5 @@
-.fixed-action-btn.horizontal style=("position: absolute; display: inline-block; right: 24px;") 
-  a.btn-floating.btn-large.red
+.fixed-action-btn.horizontal style=("position: absolute; display: inline-block; right: 24px;")
+  a.btn-floating.btn-large.button-with-color.waves-effect.waves-light
     i.large.material-icons settings
   ul
     li.tooltipped data-tooltip="Play, tocar setlist"
@@ -10,7 +10,7 @@
         = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating' do
           i.material-icons play_arrow
     /li
-      button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button" 
+      button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
         i.fa.fa-copy
         |  Copiar
     li.tooltipped data-tooltip="Editar setlist"
@@ -31,7 +31,7 @@
     = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn btn-default' do
       i.fa.fa-play
       |  Tocar
-  button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button" 
+  button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
     i.fa.fa-copy
     |  Copiar
   = link_to edit_band_setlist_path(@band, @setlist), class: 'btn btn-default' do
@@ -41,11 +41,11 @@
     i.fa.fa-trash
     |  Excluir
 
-/#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1" 
-  .modal-dialog role="document" 
+/#form_copy_setlist.modal.fade aria-labelledby="form_copy_setlistLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document"
     .modal-content
       .modal-header
-        button.close aria-label="Fechar" data-dismiss="modal" type="button" 
+        button.close aria-label="Fechar" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
         h4#form_copy_setlistLabel.modal-title Copiar setlist
       .modal-body

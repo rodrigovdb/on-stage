@@ -1,17 +1,18 @@
 .row
   - unless @setlists.empty?
     .col.s12.m6.l6
-      .card-content
       .card
-        .card-title .: Setlists
+        .card-content
+          .card-title
+            | Setlists recentes
 
-        .collection
-          - @setlists.each do |setlist|
-            = link_to band_setlist_path(setlist.band, setlist), class: 'collection-item' do
-              span.badge
-                = "#{setlist.songs.count} música"
-                = setlist.songs.count > 1 ? "s" : ""
-              = setlist
+          .collection
+            - @setlists.each do |setlist|
+              = link_to band_setlist_path(setlist.band, setlist), class: 'collection-item' do
+                span.badge
+                  = "#{setlist.songs.count} música"
+                  = setlist.songs.count > 1 ? "s" : ""
+                = setlist
 
   .col.s12.m6.l6
     .card

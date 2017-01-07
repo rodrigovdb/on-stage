@@ -33,7 +33,7 @@
             = render 'setlist_song_fields', f: setlist_song
 
       .links.container-to-link-to-add
-        = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'btn btn-floating btn-large waves-effect waves-light red right' } do
+        = link_to_add_association f, :setlist_songs, { data: { "association-insertion-node": '#setlist_songs', "association-insertion-method": 'append' }, class: 'btn btn-floating btn-large waves-effect waves-light button-with-color right' } do
           i.material-icons add
 
   = f.submit 'Salvar', class: 'btn'
