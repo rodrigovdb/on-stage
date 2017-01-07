@@ -48,3 +48,17 @@ table{
 .button-with-color{
   background-color  : $secondary-color;
 }
+
+nav{
+  .nav-wrapper{
+    ul{
+      li{
+        a{
+          i{
+            margin-right  : 3px;
+          }
+        }
+      }
+    }
+  }
+}
