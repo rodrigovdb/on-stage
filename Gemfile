@@ -12,16 +12,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'font-awesome-rails'
 
 gem 'unicorn'
 
 # Material design
-gem 'materialize-sass'
 gem 'material_icons'
+gem 'materialize-sass'
 
 # Authentication
 gem 'devise'
@@ -56,5 +56,6 @@ group :development do
 
   gem 'racksh'
 
+  gem 'reek'
   gem 'rubocop'
 end

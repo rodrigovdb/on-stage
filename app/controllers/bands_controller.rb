@@ -33,27 +33,24 @@ class BandsController < ApplicationController
     user    = User.find_by_email params[:email]
     @errors = validate_insert_member(user)
 
-    if @errors.empty?
-      @band.users << user
+    return unless @errors.empty?
 
-      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-    end
+    @band.users << user
+
+    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
   end
 
   def remove_member
-    user_id = params[:member]
     user    = User.find params[:member]
 
     @errors = validate_remove_member(user)
 
-    if @errors.empty?
-      item = BandUser.where(band: @band, user: user).first
-      item.destroy
+    return render :show unless @errors.empty?
 
-      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-    else
-      render :show
-    end
+    item = BandUser.where(band: @band, user: user).first
+    item.destroy
+
+    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
   end
 
   # POST /bands
