@@ -1,0 +1,15 @@
+@import "materialize/components/color";
+//$primary-color: color("blue", "lighten-2") !default;
+//$secondary-color: color("yellow", "base") !default;
+
+$primary-color: color("deep-purple", "base") !default;
+//$secondary-color: color("red", "accent-2") !default;
+
+@import "material_icons";
+@import "materialize";
+
+@import "font-awesome";
+
+@import "login";
+@import "main";
+@import "setlists";

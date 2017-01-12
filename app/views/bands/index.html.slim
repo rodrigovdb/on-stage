@@ -1,8 +1,8 @@
-h3.page-header Minhas bandas
+h4 Minhas bandas
 
-.list-group
+.collection
   - @bands.each do |band|
-    = link_to band_path(band), class: 'list-group-item' do
+    = link_to band_path(band), class: 'collection-item' do
       span.badge
         = "#{band.users.count} membro"
         = band.users.count > 1 ? "s" : ""
@@ -12,6 +12,5 @@ h3.page-header Minhas bandas
       = band.name
 
 br
-= link_to new_band_path, class: 'btn btn-default' do
-  i.fa.fa-plus
-  |  Cadastrar Banda
+= link_to new_band_path, class: 'btn btn-floating btn-large waves-effect waves-light button-with-color right' do
+  i.material-icons add

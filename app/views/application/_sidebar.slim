@@ -1,29 +1,43 @@
-/! Sidebar Menu Items - These collapse to the responsive navigation menu on small screens
-.collapse.navbar-collapse.navbar-ex1-collapse
-  ul.nav.navbar-nav.side-nav
-    li
-      = link_to root_path do
-        i.fa.fa-fw.fa-dashboard
-        | Página inicial
+ul#nav-mobile.side-nav.fixed style=("transform: translateX(0px);")
+  li
+    .userView
+      .background
+        /img src="images/office.jpg" /
+      a.userLogo href="#!user"
+        span.circle.userLogo.center
+          i.medium.material-icons perm_identity
+        /img.circle src="images/yuna.jpg" /
+      a href="#!email"
+        span.email.center
+          = current_user.email
+  li
+    .divider
 
-    li
-      a data-target="#demo" data-toggle="collapse" href="javascript:;"
-        i.fa.fa-fw.fa-users
-        | Minhas bandas
-        i.fa.fa-fw.fa-caret-down
-      ul#demo.collapse
-        li
-          = link_to bands_path do
-            i.fa.fa-fw.fa-users
-            | Todas as bandas
+  li
+    = link_to root_path do
+      i.material-icons dashboard
+      | Página inicial
 
-        - current_user.associate_bands.each do |band|
+  li
+    .divider
+  li
+    a.subheader Minhas Bandas
+  li
+    = link_to bands_path do
+      | Todas as bandas
+      i.material-icons supervisor_account
+    - current_user.associate_bands.each do |band|
+      li.no-padding
+        ul.collapsible.collapsible-accordion
           li
-            = link_to band_path(band)
+            a.collapsible-header
               = band.name
-
-    li
-      = link_to destroy_user_session_path, { method: :delete } do
-        i.fa.fa-fw.fa-power-off
-        | Sair
-
+              i.material-icons arrow_drop_down
+            .collapsible-body
+              = render 'bands/navbar', band: band
+  li
+    .divider
+  li
+    = link_to destroy_user_session_path, { method: :delete } do
+      i.material-icons input
+      | Sair

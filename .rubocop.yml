@@ -1,5 +1,9 @@
 # TrivialAccessors requires exact name matches and doesn't allow
 # predicated methods by default.
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*'
 Style/TrivialAccessors:
   AllowPredicates: true
 LineLength:

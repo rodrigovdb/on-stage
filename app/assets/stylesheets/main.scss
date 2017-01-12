@@ -1,3 +1,71 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.userView{
+  a.userLogo{
+    span{
+      background-color  : #efefef;
+      margin            : auto;
+      color             : #555;
+    }
+  }
+}
+
+#error_explanation{
+  padding               : 10px;
+  background-color      : #fcc;
+  border                : solid 1px #f00;
+}
+
+.band-menu{
+  margin-top            : 10px;
+}
+
+.page-title-with-action-btn{
+  position  : relative;
+  height    : 80px;
+}
+
+.navbar-button{
+  display   : inline-block;
+  position  : absolute;
+  right     : 0px;
+  top       : 10px;
+}
+
+.container-to-link-to-add{
+  position    : relative;
+  height      : 60px;
+  padding-top : 10px;
+}
+
+table{
+  tbody{
+    tr{
+      td{
+        a{
+          color : $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+.button-with-color{
+  background-color  : $secondary-color;
+}
+
+nav{
+  .nav-wrapper{
+    ul{
+      li{
+        a{
+          i{
+            margin-right  : 3px;
+          }
+        }
+      }
+    }
+  }
+}

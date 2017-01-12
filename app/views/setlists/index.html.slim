@@ -1,19 +1,25 @@
-= render 'bands/navbar', active: 'setlists'
+h3 = @band.name
+h4 Setlists
 
-h3 Setlists
-
-.list-group
-  - @setlists.each do |setlist|
-      = link_to band_setlist_path(@band, setlist), class: 'list-group-item' do
-        span.badge
+table.striped
+  thead
+    tr
+      th Setlist
+      th Duração
+      th Músicas
+  tbody
+    - @setlists.each do |setlist|
+      tr
+        td
+          = link_to band_setlist_path(@band, setlist), class: 'list-group-item' do
+            = setlist
+        td
+          = duration_to_human setlist.duration
+        td
           = "#{setlist.songs.count} música"
           = setlist.songs.count > 1 ? "s" : ""
-        span.badge
-          = duration_to_human setlist.duration
-        = setlist
 
 br
 
-= link_to new_band_setlist_path(@band), class: 'btn btn-default' do
-  i.fa.fa-plus
-  |  Cadastrar Setlist
+= link_to new_band_setlist_path(@band), class: 'btn btn-floating btn-large waves-effect waves-light button-with-color right' do
+  i.material-icons add

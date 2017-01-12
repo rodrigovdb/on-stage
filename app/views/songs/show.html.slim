@@ -1,16 +1,16 @@
-= render 'bands/navbar', active: 'musicas'
+.page-title-with-action-btn
+  .fixed-action-btn.horizontal.navbar-button
+    a.btn-floating.btn-large.button-with-color.waves-effect.waves-light
+      i.large.material-icons settings
+    ul
+      li
+        = link_to edit_band_song_path(@band, @song), class: 'btn-floating' do
+          i.material-icons mode_edit
 
-h3.page-header = "#{@song.artist} - #{@song.name}"
+      li
+        = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating' do
+          i.material-icons delete
 
-.btn-group
-  a.btn.btn-default href="javascript:window.history.go(-1)"
-    i.fa.fa-arrow-left
-    | Voltar
-  = link_to edit_band_song_path(@band, @song), class: 'btn btn-default' do
-    i.fa.fa-pencil
-    | Editar
-  = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn btn-default' do
-    i.fa.fa-trash
-    | Excluir
+h3 = @song
 
 == render 'show'

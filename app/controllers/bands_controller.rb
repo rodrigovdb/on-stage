@@ -31,31 +31,26 @@ class BandsController < ApplicationController
 
   def join_members
     user    = User.find_by_email params[:email]
-    @errors = validate_insert_member
+    @errors = validate_insert_member(user)
 
-    if @errors.empty?
-      @band.users << user
+    return unless @errors.empty?
 
-      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-    else
-      render :show
-    end
+    @band.users << user
+
+    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
   end
 
   def remove_member
-    user_id = params[:member]
-    user    = User.find user_id
+    user    = User.find params[:member]
 
-    @errors = validate_remove_member
+    @errors = validate_remove_member(user)
 
-    if @errors.empty?
-      item = BandUser.where(band: @band, user: user).first
-      item.destroy
+    return render :show unless @errors.empty?
 
-      redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-    else
-      render :show
-    end
+    item = BandUser.where(band: @band, user: user).first
+    item.destroy
+
+    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
   end
 
   # POST /bands
@@ -107,7 +102,7 @@ class BandsController < ApplicationController
     params.require(:band).permit(:user_id, :name)
   end
 
-  def validate_insert_member
+  def validate_insert_member(user)
     @errors = []
     @errors << "Usuário #{params[:email]} não existe" unless user
     @errors << "Usuário #{params[:email]} já faz parte da banda" if @band.users.include? user
@@ -115,7 +110,7 @@ class BandsController < ApplicationController
     @errors
   end
 
-  def validate_remove_member
+  def validate_remove_member(user)
     @errors = []
     @errors << "Usuário não existe" unless user
     @errors << "Usuário #{user.email} não pertence à banda #{@band.name}" unless @band.users.include? user

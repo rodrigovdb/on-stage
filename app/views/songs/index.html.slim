@@ -1,16 +1,21 @@
-= render 'bands/navbar', active: 'musicas'
+h3 = @band.name
+h4 Músicas
 
-h3.page-header Músicas
-
-.list-group
-  - @songs.each do |song|
-    = link_to band_song_path(@band, song),  class: 'list-group-item' do
-      span.badge
-        = song.beauty_duration
-      = song
+table.striped
+  thead
+    tr
+      th data-field="name" Música
+      th data-field="duration" Duração
+      th data-field="key" Tom
+  tbody
+    - @songs.each do |song|
+      tr
+        td
+          = link_to song, band_song_path(@band, song)
+        td = song.beauty_duration
+        td = song.key
 
 br
 
-= link_to new_band_song_path(@band), class: 'btn btn-default' do
-  i.fa.fa-plus
-  | Cadastrar Música
+= link_to new_band_song_path(@band), class: 'btn btn-floating btn-large waves-effect waves-light button-with-color right' do
+  i.material-icons add

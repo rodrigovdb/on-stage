@@ -1,0 +1,15 @@
+h3 = @band.name
+
+.row
+  .col.s12.m6.l6
+    .card
+      .card-content
+        .card-title
+          | Adicionar pessoa
+
+        #form
+          = render 'form_invite_members'
+
+      .card-action
+        - if @band.owner == current_user
+          = link_to 'Cancelar', band_path(@band)

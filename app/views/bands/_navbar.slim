@@ -1,36 +1,26 @@
-.navbar.navbar-default
-  .container
-    .navbar-header
-      button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#"
-        i.fa.fa-music
-        = " #{@band.name}"
+ul class="#{defined?(align) ? align : ''}"
+  li
+    = link_to band_path(band) do
+      i.fa.fa-users
+      | Pessoas
+  li
+    = link_to band_setlists_path(band) do
+      i.fa.fa-list
+      | Setlists
+  li
+    = link_to band_songs_path(band) do
+      i.fa.fa-music
+      | Músicas
 
-    .navbar-collapse.collapse
-      ul.nav.navbar-nav
-        li#integrantes class="#{active == 'integrantes' ? 'active' : ''}"
-          = link_to band_path(@band), class: 'button btn-large' do
-            i.fa.fa-users
-            |  Integrantes
-        li#setlists class="#{active == 'setlists' ? 'active' : ''}"
-          = link_to band_setlists_path(@band), class: 'button btn-large' do
-            i.fa.fa-list
-            |  Setlists
-        li#musicas class="#{active == 'musicas' ? 'active' : ''}"
-          = link_to band_songs_path(@band), class: 'button btn-large' do
-            i.fa.fa-music
-            | Músicas
-        - if @band.owner == current_user
-          li#editar class="#{active == 'editar' ? 'active' : ''}"
-            = link_to edit_band_path(@band), class: 'button btn-large' do
-              i.fa.fa-pencil
-              | Editar
-          li#excluir class="#{active == 'excluir' ? 'active' : ''}"
-            = link_to @band, data: { confirm: 'ATENÇÃO: A banda, suas músicas e setlists serão excluídos! Esta operação é irreversível! Deseja continuar?' }, method: :delete, class: 'button btn-large' do
-              i.fa.fa-trash
-              | Excluir
+  - if band.owner == current_user
+    li
+      = link_to edit_band_path(band) do
+        i.fa.fa-pencil
+        | Editar
+    li
+      = link_to band, data: { confirm: 'ATENÇÃO: A banda, suas músicas e setlists serão excluídos! Esta operação é irreversível! Deseja continuar?' }, method: :delete do
+        i.fa.fa-trash
+        | Excluir
 
+  li
+    .divider

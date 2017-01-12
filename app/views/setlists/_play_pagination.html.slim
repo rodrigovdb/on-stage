@@ -1,14 +1,13 @@
-.btn-group.pull-right
-  - if @setlist.first_song != @song
-    = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn btn-lg btn-default' do
-      i.fa.fa-fast-backward
+- if @setlist.first_song != @song
+  = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating btn-large' do
+    i.fa.fa-fast-backward.tooltipped data-tooltip="Primeira música"
 
-    = link_to play_band_setlists_path(@band, @setlist, @setlist_song.previous.song), class: 'btn btn-lg btn-default' do
-      i.fa.fa-step-backward
+  = link_to play_band_setlists_path(@band, @setlist, @setlist_song.previous.song), class: 'btn-floating btn-large' do
+    i.fa.fa-step-backward.tooltipped data-tooltip="Música anterior"
 
-  - if @setlist.last_song != @song
-    = link_to play_band_setlists_path(@band, @setlist, @setlist_song.next.song), class: 'btn btn-lg btn-default' do
-      i.fa.fa-step-forward
+- if @setlist.last_song != @song
+  = link_to play_band_setlists_path(@band, @setlist, @setlist_song.next.song), class: 'btn-floating btn-large' do
+    i.fa.fa-step-forward.tooltipped data-tooltip="Próxima música"
 
-    = link_to play_band_setlists_path(@band, @setlist, @setlist.last_song), class: 'btn btn-lg btn-default' do
-      i.fa.fa-fast-forward
+  = link_to play_band_setlists_path(@band, @setlist, @setlist.last_song), class: 'btn-floating btn-large' do
+    i.fa.fa-fast-forward.tooltipped data-tooltip="Última música"

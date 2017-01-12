@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :band_users
   has_many :bands, through: :band_users
 
+  validates :email, uniqueness: true, presence: true
+
   def associate_bands
     Band.joins(:band_users).where('band_users.user_id = ?', id).order(:name)
   end

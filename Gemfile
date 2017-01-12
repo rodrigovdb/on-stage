@@ -12,14 +12,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'font-awesome-rails'
 
 gem 'unicorn'
 
-# Bootstrap
-gem 'twitter-bootstrap-rails'
+# Material design
+gem 'material_icons'
+gem 'materialize-sass'
 
 # Authentication
 gem 'devise'
@@ -35,6 +37,7 @@ gem 'seed_dump'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
 end
 
 group :development do
@@ -53,5 +56,6 @@ group :development do
 
   gem 'racksh'
 
+  gem 'reek'
   gem 'rubocop'
 end

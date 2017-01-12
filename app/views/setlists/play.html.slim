@@ -1,10 +1,12 @@
 #play-layout
   .play-top
-    .quit-setlist-play-icon
+    .quit-setlist-play-icon style="float: left"
       = link_to band_setlist_path(@band, @setlist), class: 'btn btn-lg btn-default' do
         i.fa.fa-remove
 
-    .play-top-nav
+    | &nbsp;
+
+    .play-top-nav.right
       == render 'play_pagination'
 
   .play-content
@@ -26,4 +28,5 @@
     pre
       tt = @song.chords
 
+  .right
     == render 'play_pagination'
