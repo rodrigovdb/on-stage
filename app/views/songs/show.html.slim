@@ -1,7 +1,5 @@
 .page-title-with-action-btn
-  h3 = @song
-
-  .fixed-action-btn.horizontal style=("position: absolute; display: inline-block; right: 24px;")
+  .fixed-action-btn.horizontal.navbar-button
     a.btn-floating.btn-large.button-with-color.waves-effect.waves-light
       i.large.material-icons settings
     ul
@@ -12,5 +10,7 @@
       li
         = link_to band_song_path(@band, @song), data: {:confirm => 'Está certo disto?'}, method: :delete, class: 'btn-floating' do
           i.material-icons delete
+
+h3 = @song
 
 == render 'show'

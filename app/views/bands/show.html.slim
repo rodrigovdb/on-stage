@@ -10,14 +10,13 @@ h3 = @band.name
         .collection
           - @band.users.order(:email).each do |user|
             .collection-item href="#" id="member_#{user.id}"
-              = "#{user.email} "
-              - if @band.owner == user
-                span.badge
+              span.badge
+                - if @band.owner == user
                   i.material-icons star
-              - elsif current_user == @band.owner
-                span.badge
+                - elsif current_user == @band.owner
                   = link_to remove_member_path(@band, user), data: { confirm: 'Está certo disto?' }, method: :delete do
                     i.material-icons delete
+              = "#{user.email} "
 
       .card-reveal
         span.card-title.grey-text.text-darken-4
