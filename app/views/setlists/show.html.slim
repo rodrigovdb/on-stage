@@ -18,13 +18,13 @@ h4 = @setlist
   .card-content
     .card-title Músicas
 
-    .collection.songs-list
-      - @setlist.songs_sorted.each do |song|
-        = link_to play_band_setlists_path(@band, @setlist, song), class: 'collection-item' do
-          i.material-icons.tooltipped data-tooltip="Play, iniciar por esta música"
-            | play_circle_outline
-          | &nbsp;
-          span.songs-list-label
-            = song
-          span.badge
-            = song.beauty_duration
+    table.bordered
+      tbody
+        - @setlist.songs_sorted.each do |song|
+          tr
+            td
+              = link_to play_band_setlists_path(@band, @setlist, song), class: 'collection-item' do
+                i.material-icons.tooltipped data-tooltip="Play, iniciar por esta música"
+                  | play_circle_outline
+            td = song
+            td = song.beauty_duration
