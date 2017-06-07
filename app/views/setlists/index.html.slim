@@ -4,9 +4,9 @@ h4 Setlists
 table.striped
   thead
     tr
-      th Setlist
-      th Duração
-      th Músicas
+      th data-field="name" Setlist
+      th data-field="duration" Duração
+      th data-field="songs" Músicas
   tbody
     - @setlists.each do |setlist|
       tr
