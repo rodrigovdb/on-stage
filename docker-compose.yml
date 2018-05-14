@@ -1,0 +1,38 @@
+version: '3.1'
+
+networks:
+  stop:
+
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER:      desenv
+      POSTGRES_PASSWORD:  rapadura
+      POSTGRES_DB:        on_stage
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      stop:
+        aliases:
+          - postgres
+
+  web:
+    image: on_stage
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      - .:/var/app
+    networks:
+      stop:
+        aliases:
+          - web
+
+volumes:
+  postgres_data:
+  stop_data:
