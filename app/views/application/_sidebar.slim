@@ -1,4 +1,4 @@
-ul#nav-mobile.side-nav.fixed style=("transform: translateX(0px);")
+ul#slide-out.side-nav
   li
     .userView
       .background
@@ -41,3 +41,6 @@ ul#nav-mobile.side-nav.fixed style=("transform: translateX(0px);")
     = link_to destroy_user_session_path, { method: :delete } do
       i.material-icons input
       | Sair
+
+a#show-sidebar.btn-floating.btn-flat.btn-large.waves-effect.waves-light.button-collapse data-activates="slide-out" href="#"
+  i.material-icons menu
