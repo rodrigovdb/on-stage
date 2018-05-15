@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a#show-sidebar{
+  position  : absolute;
+  float : left;
+  top   : 4px;
+  left  : 5px;
+}
+
 .userView{
   a.userLogo{
     span{
