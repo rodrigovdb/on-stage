@@ -12,7 +12,7 @@
     == prev_page_tag unless current_page.first?
     - each_page do |page|
       - if page == current_page
-        li.active = page_tag page
+        li.active == page_tag page
       - else
         li.waves-effect = page_tag page
     == next_page_tag unless current_page.last?
