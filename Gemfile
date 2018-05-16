@@ -16,6 +16,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'font-awesome-rails'
+gem 'kaminari'
 
 gem 'unicorn'
 

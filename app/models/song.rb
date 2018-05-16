@@ -1,6 +1,8 @@
 class Song < ActiveRecord::Base
   belongs_to :band
 
+  paginates_per 10
+
   has_many :setlist_songs
   has_many :setlists, through: :setlist_songs
 
