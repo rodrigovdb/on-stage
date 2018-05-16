@@ -4,10 +4,26 @@ h4 Músicas
 table.striped
   thead
     tr
-      th data-field="artist" Artista
-      th data-field="name" Música
-      th data-field="duration" Duração
-      th data-field="key" Tom
+      th data-field="artist"
+        | Artista
+        - unless @sort == 'artist'
+          a.table-header-sort-link href="?sort=artist"
+            i.material-icons arrow_drop_down
+      th data-field="name"
+        | Música
+        - unless @sort == 'name'
+          a.table-header-sort-link href="?sort=name"
+            i.material-icons arrow_drop_down
+      th data-field="duration"
+        | Duração
+        - unless @sort == 'duration'
+          a.table-header-sort-link href="?sort=duration"
+            i.material-icons arrow_drop_down
+      th data-field="key"
+        | Tom
+        - unless @sort == 'key'
+          a.table-header-sort-link href="?sort=key"
+            i.material-icons arrow_drop_down
   tbody
     - @songs.each do |song|
       tr
