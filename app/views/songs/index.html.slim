@@ -4,14 +4,16 @@ h4 Músicas
 table.striped
   thead
     tr
+      th data-field="artist" Artista
       th data-field="name" Música
       th data-field="duration" Duração
       th data-field="key" Tom
   tbody
     - @songs.each do |song|
       tr
+        td = song.artist
         td
-          = link_to song, band_song_path(@band, song)
+          = link_to song.name, band_song_path(@band, song)
         td = song.beauty_duration
         td = song.key
 
