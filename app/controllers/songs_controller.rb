@@ -6,7 +6,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = @band.songs.order(:artist, :name)
+    @songs = @band.songs.order(:artist, :name).page params[:page]
   end
 
   # GET /songs/1
