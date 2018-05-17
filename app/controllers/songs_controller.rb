@@ -7,7 +7,13 @@ class SongsController < ApplicationController
   # GET /songs.json
   def index
     @sort   = params[:sort] || [:artist, :name]
+    @term   = params[:term] || nil
+
     @songs  = @band.songs.order(@sort).page params[:page]
+
+    unless @term.nil?
+      @songs = @songs.term(@term)
+    end
   end
 
   # GET /songs/1
