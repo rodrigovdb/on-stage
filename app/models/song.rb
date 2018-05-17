@@ -8,6 +8,8 @@ class Song < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :band, message: 'Música já cadastrada' }
 
+  scope :term, -> (term) { where("name ILIKE ? or artist ILIKE ?", "%#{term}%", "%#{term}%") }
+
   def to_s
     response  = ''
     response += "#{artist} - " unless artist.nil?
