@@ -3,20 +3,19 @@
   position          : absolute;
   top               : 0;
   width             : 100%;
-}
 
-#play-layout .play-top{
-  background-color  : #f0f;
-}
+  .play-top{}
 
-#play-layout .quit-setlist-play-icon{
-  float             : left;
-}
+  .quit-setlist-play-icon{
+    float : left;
+  }
 
-#play-layout .play-content{
-  clear             : both;
+  .play-content{
+    clear   : both;
+    padding : 0px 5px;
+  }
 }
 
 .page-header{
-  padding-top       : 10px;
+  padding-top : 10px;
 }
