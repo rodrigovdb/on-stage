@@ -1,5 +1,7 @@
 // Darken theme
+@import "application";
 
+$primary-color:   color("indigo", "base") !default;
 $secondary-color: color("deep-purple", "lighten-2") !default;
 
 .darken {
@@ -37,3 +39,18 @@ a.collection-item{
   @extend .darken;
 }
 
+#slide-out {
+  @extend .darken;
+
+  a {
+    @extend .blue-grey-text, .text-lighten-4;
+
+    i.material-icons {
+      @extend .blue-grey-text, .text-lighten-4;
+    }
+
+    i.medium.material-icons {
+      @extend .blue-grey-text, .text-darken-4;
+    }
+  }
+}

@@ -17,8 +17,7 @@ Rails.application.routes.draw do
 
   devise_for :users, path: '', path_names: { sign_in: 'entrar', sign_out: 'sair', password: 'secret', confirmation: 'confirmacao', unlock: 'desbloquear', registration: 'registrar', sign_up: 'cadastrar' }
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get '/modo-noturno', to: 'application#darken', as: :darken
 
   # You can have the root of your site routed with "root"
   root 'main#index'

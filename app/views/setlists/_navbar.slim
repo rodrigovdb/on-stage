@@ -9,9 +9,8 @@
       - else
         = link_to play_band_setlists_path(@band, @setlist, @setlist.first_song), class: 'btn-floating waves-effect waves-light' do
           i.material-icons play_arrow
-    li
-      /button.btn.btn-default data-target="#form_copy_setlist" data-toggle="modal" type="button"
-      a.btn-floating.waves-effect.waves-light href="#modal1"
+    li.tooltiped data-tooltip="Copiar setlist"
+      a.btn-floating.waves-effect.waves-light.tooltiped data-tooltip="Copiar setlist" href="#modal1"
         i.fa.fa-copy
         |  Copiar
     li.tooltipped data-tooltip="Editar setlist"

@@ -2,7 +2,7 @@ h4.login_title.center
   | :: OnStage
 
 .valign-wrapper.row.login-box
-  .col.card.hoverable.s10.pull-s1.m6.pull-m3.l4.pull-l4.blue-grey.darken-4
+  .col.card.hoverable.s10.pull-s1.m6.pull-m3.l4.pull-l4.darken
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
       .card-content
         = devise_error_messages!
@@ -19,7 +19,7 @@ h4.login_title.center
             = f.label :password
 
           = f.submit "Entrar", class: 'btn'
-      .card-action.blue-grey.darken-4
+      .card-action
         = render "devise/shared/links"
 
 /.row
@@ -28,7 +28,7 @@ h4.login_title.center
     h3 .: Login
 
     .card
-      .card-content.box-login.blue-grey.darken-4
+      .card-content.box-login
         = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
           .input-field
             = f.email_field :email, autofocus: true
