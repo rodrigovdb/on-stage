@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
 
   layout :determine_layout
 
+  def darken
+    current_user.setting.update(darken: params[:darken] == 'on')
+
+    referer = Rails.application.routes.recognize_path(request.referrer)
+
+    redirect_to referer and return
+  end
+
   def set_band
     @band = Band.find params[:band_id]
   end

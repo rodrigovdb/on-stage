@@ -21,3 +21,5 @@ public/assets
 
 .vagrant
 .env
+dump/
+*.swp

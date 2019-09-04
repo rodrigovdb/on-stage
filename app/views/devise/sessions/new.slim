@@ -1,5 +1,29 @@
-.row
-  .col.s12.m3.l2
+h4.login_title.center
+  | :: OnStage
+
+.valign-wrapper.row.login-box
+  .col.card.hoverable.s10.pull-s1.m6.pull-m3.l4.pull-l4.darken
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
+      .card-content
+        = devise_error_messages!
+
+        span.card-title Log in
+        .row
+          .input-field.col.s12
+            = f.email_field :email, autofocus: true
+            = f.label :email
+
+        .row
+          .input-field.col.s12
+            = f.password_field :password, autocomplete: 'off'
+            = f.label :password
+
+          = f.submit "Entrar", class: 'btn'
+      .card-action
+        = render "devise/shared/links"
+
+/.row
+  .col.s12
   .col.s12.m6.l8
     h3 .: Login
 
@@ -20,7 +44,7 @@
           /span.card-title.activator
             i.material-icons.right more_vert
 
-      .card-action
+      .card-action.blue-grey.darken-4
         = render "devise/shared/links"
 
       .card-reveal

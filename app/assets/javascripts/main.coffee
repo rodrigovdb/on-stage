@@ -13,4 +13,8 @@ $(document).ready ->
     selectMonths: true
     selectYears: 15
 
+  $('#darken_switch').change ->
+    $('#darken_form').submit()
+    return
+
   return

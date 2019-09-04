@@ -7,9 +7,13 @@ ul#slide-out.side-nav
         span.circle.userLogo.center
           i.medium.material-icons perm_identity
         /img.circle src="images/yuna.jpg" /
+      br
       a href="#!email"
         span.email.center
           = current_user.email
+
+      = render 'darken'
+
   li
     .divider
 

@@ -9,7 +9,7 @@ h3 = @band.name
 
         .collection
           - @band.users.order(:email).each do |user|
-            .collection-item href="#" id="member_#{user.id}"
+            a.collection-item href="#" id="member_#{user.id}"
               span.badge
                 - if @band.owner == user
                   i.material-icons star
@@ -19,7 +19,7 @@ h3 = @band.name
               = "#{user.email} "
 
       .card-reveal
-        span.card-title.grey-text.text-darken-4
+        span.card-title
           | Adicionar pessoa
           i.material-icons.right close
         #form
