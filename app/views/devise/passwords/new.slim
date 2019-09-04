@@ -1,4 +1,23 @@
-.row
+h4.login_title.center
+  | :: OnStage - Esqueceu a senha?
+
+.valign-wrapper.row.login-box
+  .col.card.hoverable.s10.pull-s1.m6.pull-m3.l4.pull-l4.blue-grey.darken-4
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      .card-content
+        = devise_error_messages!
+
+        .row
+          .input-field
+            = f.email_field :email, autofocus: true
+            = f.label       :email
+
+          = f.submit "Envie-me instruções!", class: 'btn'
+
+      .card-action.blue-grey.darken-4
+        = render "devise/shared/links"
+
+/.row
   .col.s12.m3.l2
   .col.s12.m6.l8
     h3 Esqueceu a senha?
