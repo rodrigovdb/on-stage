@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212133531) do
+ActiveRecord::Schema.define(version: 20190904150108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 20151212133531) do
 
   add_index "setlists", ["band_id"], name: "index_setlists_on_band_id", using: :btree
 
+  create_table "settings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.boolean  "darken",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "settings", ["user_id"], name: "index_settings_on_user_id", using: :btree
+
   create_table "songs", force: :cascade do |t|
     t.integer  "band_id"
     t.string   "name"
@@ -94,5 +103,6 @@ ActiveRecord::Schema.define(version: 20151212133531) do
   add_foreign_key "setlist_songs", "setlists"
   add_foreign_key "setlist_songs", "songs"
   add_foreign_key "setlists", "bands"
+  add_foreign_key "settings", "users"
   add_foreign_key "songs", "bands"
 end
