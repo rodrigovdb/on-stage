@@ -1,8 +1,9 @@
-FROM ruby:2.3.3
+FROM ruby:2.3.1
 
 MAINTAINER Rodrigo VDB "rodrigovdb@gmail.com"
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs npm
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 
 ENV INSTALL_PATH /var/app
 RUN mkdir -p $INSTALL_PATH
