@@ -46,18 +46,7 @@ group :development do
   gem 'bullet'
   gem 'rails-erd'
   gem 'railroady'
-
-  gem 'mina',             require: false
-  gem 'mina-multistage',  require: false
-  gem 'mina-unicorn',     require: false
-  gem 'mina-hooks',       require: false
-  gem 'mina-nginx',       require: false
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   gem 'racksh'
-
   gem 'reek'
   gem 'rubocop'
 end
