@@ -22,7 +22,8 @@ gem 'unicorn'
 
 # Material design
 gem 'material_icons'
-gem 'materialize-sass'
+# TODO: Unpin this version
+gem 'materialize-sass', '~> 0.100.2'
 
 # Authentication
 gem 'devise'
@@ -32,7 +33,8 @@ gem 'devise-i18n'
 gem 'cocoon'
 
 # Db stuffs
-gem 'pg'
+# TODO: Unpin this versin
+gem 'pg', '~> 0.20'
 gem 'seed_dump'
 
 group :development, :test do
