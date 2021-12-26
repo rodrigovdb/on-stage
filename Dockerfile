@@ -1,4 +1,4 @@
-FROM ruby:2.4.10
+FROM ruby:2.5.9
 
 MAINTAINER Rodrigo VDB "rodrigovdb@gmail.com"
 
