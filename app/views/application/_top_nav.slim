@@ -1,9 +1,0 @@
-nav
-  .nav-wrapper.container
-    a.brand-logo href="#" OnStage
-
-- unless @band.nil?
-  - unless @band.id.nil?
-    nav
-      .nav-wrapper.container
-        = render 'bands/navbar', band: @band, align: 'right'
