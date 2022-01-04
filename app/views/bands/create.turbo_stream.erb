@@ -1,0 +1,12 @@
+<% if @band.errors.present? %>
+  <%= notice_stream(message: :error, status: 'red') %>
+  <%= form_band_stream(band: @band) %>
+<% else %>
+  <%= notice_stream(message: :create, status: 'green') %>
+
+  <%= turbo_stream.replace :new_band do %>
+    <%= turbo_frame_tag :new_band %>
+  <% end %>
+
+  <%= turbo_stream.prepend 'bands', partial: 'band', locals: { band: @band } %>
+<% end %>

@@ -1,0 +1,63 @@
+<!--
+  Sidebar
+
+  <div>
+  <%= button_to 'Sair', destroy_user_session_path, class: '', method: :delete %>
+  </div>
+-->
+
+<aside
+  x-show="isSidebarOpen"
+  x-transition:enter="transition-all transform duration-300 ease-in-out"
+  x-transition:enter-start="-translate-x-full opacity-0"
+  x-transition:enter-end="translate-x-0 opacity-100"
+  x-transition:leave="transition-all transform duration-300 ease-in-out"
+  x-transition:leave-start="translate-x-0 opacity-100"
+  x-transition:leave-end="-translate-x-full opacity-0"
+  x-ref="sidebar"
+  @keydown.escape="window.innerWidth <= 1024 ? isSidebarOpen = false : ''"
+  tabindex="-1"
+  class="fixed inset-y-0 z-10 flex flex-shrink-0 overflow-hidden bg-white border-r lg:static dark:border-indigo-800 dark:bg-darker focus:outline-none"
+  >
+
+  <%# = render 'mini_sidebar' %>
+
+  <!-- Sidebar links -->
+  <nav aria-label="Main" class="flex-1 w-64 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+    <%= render 'band_links' %>
+  </nav>
+</aside>
+
+<!-- Sidebars button -->
+<div class="fixed flex items-center space-x-4 top-5 right-10 lg:hidden">
+  <button
+    @click="isSidebarOpen = true; $nextTick(() => { $refs.sidebar.focus() })"
+    class="p-1 text-indigo-400 transition-colors duration-200 rounded-md bg-indigo-50 hover:text-indigo-600 hover:bg-indigo-100 dark:hover:text-light dark:hover:bg-indigo-700 dark:bg-dark focus:outline-none focus:ring"
+    >
+    <span class="sr-only">Toggle main manu</span>
+    <span aria-hidden="true">
+      <svg
+        x-show="!isSidebarOpen"
+        class="w-8 h-8"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+        <svg
+          x-show="isSidebarOpen"
+          class="w-8 h-8"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </span>
+  </button>
+</div>
+
+

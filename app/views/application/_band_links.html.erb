@@ -1,0 +1,54 @@
+<!-- Dashboards links -->
+<div x-data="{ isActive: false, open: false}">
+  <!-- active & hover classes 'bg-indigo-100 dark:bg-indigo-600' -->
+  <a
+    href="#"
+    @click="$event.preventDefault(); open = !open"
+    class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-indigo-100 dark:hover:bg-indigo-600"
+    :class="{'bg-indigo-100 dark:bg-indigo-600': isActive || open}"
+    role="button"
+    aria-haspopup="true"
+    :aria-expanded="(open || isActive) ? 'true' : 'false'"
+    >
+    <span aria-hidden="true">
+      <svg
+        class="w-5 h-5"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+      </svg>
+    </span>
+    <span class="ml-2 text-sm"><%= t('my_bands') %></span>
+    <span class="ml-auto" aria-hidden="true">
+      <!-- active class 'rotate-180' -->
+      <svg
+        class="w-4 h-4 transition-transform transform"
+        :class="{ 'rotate-180': open }"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+      </svg>
+    </span>
+  </a>
+  <div role="menu" x-show="open" class="mt-2 space-y-2 px-7" aria-label="Dashboards">
+    <%= link_to 'Todas as bandas', bands_path, role: 'menuitel', class: 'block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700' %>
+    <!-- active & hover classes 'text-gray-700 dark:text-light' -->
+    <!-- inActive classes 'text-gray-400 dark:text-gray-400' -->
+
+    <% current_user.associate_bands.each do |band| %>
+      <%= link_to band.name, band, role: 'menuitem', class: 'block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:text-gray-400 dark:hover:text-light hover:text-gray-700' %>
+    <% end %>
+  </div>
+</div>
+

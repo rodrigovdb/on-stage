@@ -1,0 +1,47 @@
+version: '3.1'
+
+networks:
+  net:
+
+services:
+  postgres:
+    image: postgres:alpine
+    networks:
+      net:
+        aliases:
+          - postgres
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    image: on_stage_api
+    build: .
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      - .:/var/app
+    networks:
+      net:
+        aliases:
+          - web
+
+  # frontend:
+  #   build: .
+  #   command: ./bin/webpack-dev-server
+  #   volumes:
+  #     - .:/var/app
+  #   ports:
+  #     - 3035:3035
+  #   env_file:
+  #     - .env
+
+volumes:
+  postgres_data:

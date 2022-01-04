@@ -1,0 +1,15 @@
+default: &default
+  adapter   : postgresql
+  encoding  : unicode
+  host      : postgres
+  username  : desenv
+  password  : rapadura
+  port      : 5432
+
+development:
+  <<: *default
+  database  : on_stage_development
+
+test:
+  <<: *default
+  database  : on_stage_test

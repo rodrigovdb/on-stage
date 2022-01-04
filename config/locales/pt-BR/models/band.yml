@@ -1,0 +1,10 @@
+pt-BR:
+  models_and_attributes: &models_and_attributes
+    models:
+      band: &band
+        one: Banda
+        other: Bandas
+    attributes:
+      band: &band
+        name: Nome
+        owner: Responsável

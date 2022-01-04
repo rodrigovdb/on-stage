@@ -1,0 +1,7 @@
+<% if @band.errors.present? %>
+  <%= notice_stream(message: :error, status: 'red') %>
+  <%= form_band_stream(band: @band) %>
+<% else %>
+  <%= notice_stream(message: :update, status: 'green') %>
+  <%= turbo_stream.replace dom_id(@band), partial: 'band', locals: { band: @band } %>
+<% end %>
