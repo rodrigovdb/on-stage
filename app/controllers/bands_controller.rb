@@ -54,6 +54,8 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       if @band.save
+        current_user.bands << @band
+
         format.turbo_stream
         format.html { redirect_to bands_path, notice: "Band was successfully created." }
         format.json { render :show, status: :created, location: @band }
