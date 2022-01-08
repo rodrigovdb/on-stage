@@ -1,8 +1,3 @@
 <%= turbo_frame_tag :new_band do %>
-    <%= render "form", band: @band %>
-
-    <%= link_to "#{t('back_to')} #{t('my_bands').downcase}",
-      bands_path,
-      class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium bg-indigo-100 text-white dark:bg-indigo-600" %>
-    </div>
+  <%= render "form", band: @band %>
 <% end %>
