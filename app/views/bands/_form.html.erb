@@ -9,7 +9,7 @@
       <% if band.errors.any? %>
         <div class="py-2 px-4 border dark:border-blue-900 dark:text-red-900 rounded-md my-5">
           <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved:</h2>
- 
+
           <ul>
             <% band.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -17,18 +17,18 @@
           </ul>
         </div>
       <% end %>
- 
+
       <div class="mb-6">
         <%= form.label :name, class: "text-sm font-medium block mb-2" %>
         <%= form.text_field :name, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
       </div>
- 
+
       <div class="mb-6">
         <div class="inline-flex rounded-md shadow-sm" role="group">
-          <%= form.submit class: "rounded-l-lg py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-indigo-900 hover:border-blue-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
+          <%= form.submit class: "rounded-l-lg py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-slate-900 dark:border-slate-900 hover:border-indigo-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
           <%= link_to "#{t('back_to')} #{t('my_bands').downcase}",
             bands_path,
-            class: "rounded-r-md py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-indigo-900 hover:border-blue-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
+            class: "rounded-r-md py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-slate-900 dark:border-slate-900 hover:border-indigo-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
         </div>
       </div>
     <% end %>
