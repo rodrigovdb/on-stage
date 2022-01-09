@@ -4,15 +4,16 @@
 
     <div class="rounded-lg my-5 p-5 border border-slate-700">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="my-5">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "dark:bg-slate-500 focus:dark:bg-indigo-900 focus:border-b-indigo-500 focus:text-white dark:border-b-indigo-900 border-b-indigo-700" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-500 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
         </div>
 
         <div class="my-5">
           <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password", class: "dark:bg-slate-500 focus:dark:bg-indigo-900 focus:border-b-indigo-500 focus:text-white dark:border-b-indigo-900 border-b-indigo-700" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "dark:bg-slate-900 focus:dark:bg-indigo-900 focus:border-b-indigo-500 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
         </div>
 
         <div class="my-5">

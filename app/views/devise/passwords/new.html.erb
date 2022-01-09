@@ -1,28 +1,24 @@
-<div class="valign-wrapper row login-box">
-  <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
-    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <div class="card-content">
+<div class="w-96 mx-auto min-h-screen align-middle items-center justify-center flex">
+  <div class="py-12 px-4 basis-full">
+    <h1 class="text-3xl dark:text-indigo-600">.: OnStage :: Senha</h1>
+
+    <div class="rounded-lg my-5 p-5 border border-slate-700">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <span class="card-title">.: OnStage - Esqueceu a senha?</span>
-
-        <div class="row">
-          <div class="col s12">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
+        <div class="my-5">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-500 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
         </div>
 
-        <div class="row">
-          <div class="col s12">
-            <%= f.submit 'Enviar instruções', class: 'btn' %>
-          </div>
+        <div class="my-5">
+          <%= render "devise/shared/links" %>
         </div>
-      </div>
-    <% end %>
 
-    <div class="card-action">
-      <%= render "devise/shared/links" %>
+        <div class="my-5 text-right">
+          <%= f.submit 'Enviar instruções', class: "py-2 px-4 text-sm font-medium focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 bg-indigo-900 dark:bg-indigo-900 text-white py-1 px-2 border border-indigo-600 hover:border-blue-500 rounded-lg" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

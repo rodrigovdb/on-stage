@@ -1,11 +1,3 @@
-<!--
-  Sidebar
-
-  <div>
-  <%= button_to 'Sair', destroy_user_session_path, class: '', method: :delete %>
-  </div>
--->
-
 <aside
   x-show="isSidebarOpen"
   x-transition:enter="transition-all transform duration-300 ease-in-out"
@@ -25,6 +17,7 @@
   <!-- Sidebar links -->
   <nav aria-label="Main" class="flex-1 w-64 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
     <%= render 'band_links' %>
+    <%= render 'user_links' %>
   </nav>
 </aside>
 
