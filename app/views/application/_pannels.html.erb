@@ -25,7 +25,7 @@
           tabindex="-1"
           x-show="isSettingsPanelOpen"
           @keydown.escape="isSettingsPanelOpen = false"
-          class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl dark:bg-darker dark:text-light sm:max-w-md focus:outline-none"
+          class="fixed inset-y-0 right-0 z-20 w-full max-w-xs bg-white shadow-xl dark:dark:bg-slate-900 dark:text-light sm:max-w-md focus:outline-none"
           aria-labelledby="settinsPanelLabel"
           >
           <div class="absolute left-0 p-2 transform -translate-x-full">
@@ -158,7 +158,7 @@
           @keydown.escape="isNotificationsPanelOpen = false"
           tabindex="-1"
           aria-labelledby="notificationPanelLabel"
-          class="fixed inset-y-0 z-20 w-full max-w-xs bg-white dark:bg-darker dark:text-light sm:max-w-md focus:outline-none"
+          class="fixed inset-y-0 z-20 w-full max-w-xs bg-white dark:dark:bg-slate-900 dark:text-light sm:max-w-md focus:outline-none"
           >
           <div class="absolute right-0 p-2 transform translate-x-full">
             <!-- Close button -->
@@ -247,7 +247,7 @@
           x-transition:leave-end="-translate-x-full"
           x-show="isSearchPanelOpen"
           @keydown.escape="isSearchPanelOpen = false"
-          class="fixed inset-y-0 z-20 w-full max-w-xs bg-white shadow-xl dark:bg-darker dark:text-light sm:max-w-md focus:outline-none"
+          class="fixed inset-y-0 z-20 w-full max-w-xs bg-white shadow-xl dark:dark:bg-slate-900 dark:text-light sm:max-w-md focus:outline-none"
           >
           <div class="absolute right-0 p-2 transform translate-x-full">
             <!-- Close button -->
@@ -290,7 +290,7 @@
               <input
                 x-ref="searchInput"
                 type="text"
-                class="w-full py-2 pl-10 pr-4 border rounded-full dark:bg-dark dark:border-transparent dark:text-light focus:outline-none focus:ring"
+                class="w-full py-2 pl-10 pr-4 border rounded-full dark:dark:bg-slate-900 dark:border-transparent dark:text-light focus:outline-none focus:ring"
                 placeholder="Search..."
                 />
             </div>
