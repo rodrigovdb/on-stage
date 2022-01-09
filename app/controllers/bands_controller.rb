@@ -4,7 +4,6 @@ class BandsController < ApplicationController
 
   # GET /bands or /bands.json
   def index
-    @bands = current_user.bands.order(:name)
   end
 
   # GET /bands/1 or /bands/1.json

@@ -43,6 +43,8 @@
         <!-- Main content -->
         <main class="flex-1">
           <div class="flex flex-col items-center justify-center flex-1 h-full min-h-screen p-4 overflow-x-hidden overflow-y-auto text-gray-500 dark:text-gray-500">
+            <%= turbo_frame_tag :notice, class: 'w-full' do %>
+            <% end %>
 
             <%= yield %>
 

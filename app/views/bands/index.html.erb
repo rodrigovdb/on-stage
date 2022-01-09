@@ -21,22 +21,10 @@
 
   <br />
 
-  <%= turbo_frame_tag :new_band %>
+  <%= turbo_frame_tag :new_band do %>
+  <% end %>
 
-  <!-- component -->
-  <table class="min-w-full block md:table">
-    <thead class="block md:table-header-group bg-indigo-100 dark:bg-indigo-600 font-bold text-gray-500 transition-colors rounded-md dark:text-light">
-      <tr class="block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
-        <th class="p-2 text-left block md:table-cell"><%= t('models_and_attributes.attributes.band.name') %></th>
-        <th class="p-2 text-left block md:table-cell"><%= t('models_and_attributes.attributes.band.owner') %></th>
-        <th class="p-2 text-left block md:table-cell">&nbsp;</th>
-      </tr>
-    </thead>
-
-    <tbody class="block md:table-row-group">
-      <%= turbo_frame_tag :bands do %>
-        <%= render @bands %>
-      <% end %>
-    </tbody>
-  </table>
+  <%= turbo_frame_tag :bands_list do %>
+    <%= render 'bands' %>
+  <% end %>
 </div>

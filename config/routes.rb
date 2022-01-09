@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :bands, path: 'minhas-bandas', path_names: ROUTE_PATH_NAMES do
   end
 
+  get '/notice', to: 'bands#clear_message'
+
   devise_for :users, path: '', path_names: {
     sign_in: 'entrar',
     sign_out: 'sair',

@@ -1,0 +1,15 @@
+<table class="min-w-full block md:table">
+  <thead class="block md:table-header-group bg-indigo-100 dark:bg-indigo-600 font-bold text-gray-500 transition-colors rounded-md dark:text-light">
+    <tr class="block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
+      <th class="p-2 text-left block md:table-cell"><%= t('models_and_attributes.attributes.band.name') %></th>
+      <th class="p-2 text-left block md:table-cell"><%= t('models_and_attributes.attributes.band.owner') %></th>
+      <th class="p-2 text-left block md:table-cell">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody class="block md:table-row-group">
+    <% current_user.bands.order(:name).each do |band| %>
+      <%= render band %>
+    <% end %>
+  </tbody>
+</table>

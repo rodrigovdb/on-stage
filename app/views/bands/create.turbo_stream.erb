@@ -8,5 +8,9 @@
     <%= turbo_frame_tag :new_band %>
   <% end %>
 
-  <%= turbo_stream.prepend 'bands', partial: 'band', locals: { band: @band } %>
+  <%= turbo_stream.replace :bands_list do %>
+    <%= turbo_frame_tag :bands_list do %>
+      <%= render 'bands' %>
+    <% end %>
+  <% end %>
 <% end %>

@@ -1,3 +1,10 @@
 <%= turbo_frame_tag :new_band do %>
-  <%= render "form", band: @band %>
+  <div class="w-full p-4 m-4 mt-4">
+    <h1 class="text-lg font-bold text-3xl">
+      <%= t('new') %>
+      <%= t('models_and_attributes.models.band.one') %>
+    </h1>
+
+    <%= render "form", band: @band %>
+  </div>
 <% end %>
