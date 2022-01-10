@@ -1,10 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @band %>
-
-<div>
-  <%= link_to "Edit this band", edit_band_path(@band) %> |
-  <%= link_to "Back to bands", bands_path %>
-
-  <%= button_to "Destroy this band", @band, method: :delete %>
+<div class="w-full">
+  <%= turbo_frame_tag :band do %>
+  <% end %>
 </div>

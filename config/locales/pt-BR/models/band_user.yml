@@ -1,0 +1,6 @@
+pt-BR:
+  models_and_attributes: &models_and_attributes
+    models:
+      band_user: &band_user
+        one: Pessoa
+        other: Pessoas

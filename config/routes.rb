@@ -2,6 +2,7 @@ ROUTE_PATH_NAMES = { new: 'cadastrar', edit: 'alterar', destroy: 'excluir' }.fre
 
 Rails.application.routes.draw do
   resources :bands, path: 'minhas-bandas', path_names: ROUTE_PATH_NAMES do
+    resources :band_users, path: 'pessoas', path_names: ROUTE_PATH_NAMES
   end
 
   get '/notice', to: 'bands#clear_message'

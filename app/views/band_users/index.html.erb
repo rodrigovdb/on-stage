@@ -1,0 +1,31 @@
+<div class="w-full">
+  <%= turbo_frame_tag :band do %>
+    <div class="flex justify-between items-center">
+      <h1 class="text-lg font-bold text-4xl">
+        <%= t('models_and_attributes.models.band_user.other') %>
+      </h1>
+
+      <%= link_to new_band_band_user_path(@band),
+        class: "rounded-lg py-3 px-5 bg-indigo-100 dark:bg-indigo-900 block font-medium transition-colors inline-flex border border-indigo-900 hover:border-blue-900 hover:dark:bg-indigo-600 hover:bg-indigo-600 text-gray-900 dark:text-gray-900",
+        data: { 'turbo-frame': :new_band_user } do
+      %>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    </svg>
+    <span>
+      <%= t('new') %>
+      <%= t('models_and_attributes.models.band_user.one') %>
+    </span>
+  <% end %>
+    </div>
+
+    <br />
+
+    <%= turbo_frame_tag :new_band_user do %>
+    <% end %>
+
+    <%= turbo_frame_tag :band_users_list do %>
+      <%= render 'band_users' %>
+    <% end %>
+  <% end %>
+</div>

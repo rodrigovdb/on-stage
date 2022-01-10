@@ -1,0 +1,9 @@
+pt-BR:
+  models_and_attributes: &models_and_attributes
+    models:
+      user: &user
+        one: Usuário
+        other: Usuários
+    attributes:
+      user: &user
+        email: e-mail
