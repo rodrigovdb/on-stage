@@ -1,8 +1,8 @@
 <% if @band.errors.present? %>
-  <%= notice_stream(message: :error, status: 'red') %>
+  <%= notice_stream(domain: :band, message: :error, status: 'red') %>
   <%= form_band_stream(band: @band) %>
 <% else %>
-  <%= notice_stream(message: :update, status: 'green') %>
+  <%= notice_stream(domain: :band, message: :create, status: 'green') %>
 
   <%= turbo_stream.replace :new_band do %>
     <%= turbo_frame_tag :new_band %>
