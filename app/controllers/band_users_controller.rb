@@ -11,7 +11,6 @@ class BandUsersController < ApplicationController
     @band_user = BandUser.new(band: @band)
   end
 
-
   # POST /band_users or /band_users.json
   def create
     user = User.find_by(email: band_user_params[:email])
@@ -32,9 +31,11 @@ class BandUsersController < ApplicationController
 
   # DELETE /band_users/1 or /band_users/1.json
   def destroy
+    @band_user = @band.band_users.find_by(user_id: params[:id])
     @band_user.destroy
 
     respond_to do |format|
+      format.turbo_stream
       format.html { redirect_to band_users_url, notice: "Band user was successfully destroyed." }
       format.json { head :no_content }
     end
@@ -49,6 +50,6 @@ class BandUsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def band_user_params
-    params.fetch(:band_user).permit(:email)
+    params.fetch(:band_user).permit(:email, :id)
   end
 end

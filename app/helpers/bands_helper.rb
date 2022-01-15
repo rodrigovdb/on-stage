@@ -1,5 +1,4 @@
 module BandsHelper
-
   NOTICE = {
     create: 'Band created successfully',
     update: 'Band updated successfully',

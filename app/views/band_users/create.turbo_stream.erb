@@ -1,11 +1,10 @@
 <% if @band_user.errors.present? %>
-  <%= notice_stream(message: :error, status: 'red') %>
-  <%= form_band_user_stream(band_user: @band_user, band: @band) %>
+  <%= turbo_stream.replace 'notice', partial: 'notice', locals: { notice: 'Failure', status: 'red' } %>
+  <%= turbo_stream.replace 'form', partial: 'form', locals: { band_user: @band_user, band: @band } %>
 <% else %>
-  <%= notice_stream(message: :create, status: 'green') %>
+  <%= turbo_stream.replace 'notice', partial: 'notice', locals: { notice: 'Success', status: 'green' } %>
 
-  <%= turbo_stream.replace :new_band do %>
-    <%= turbo_frame_tag :new_band %>
+  <%= turbo_stream.replace :new_band_user do %>
   <% end %>
 
   <%= turbo_stream.replace :band_users_list do %>
