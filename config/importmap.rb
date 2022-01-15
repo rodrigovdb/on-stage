@@ -89,3 +89,5 @@ pin "util", to: "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.13/nodelibs/browse
 pin "util-deprecate", to: "https://ga.jspm.io/npm:util-deprecate@1.0.2/browser.js"
 pin "wrappy", to: "https://ga.jspm.io/npm:wrappy@1.0.2/wrappy.js"
 pin "xtend", to: "https://ga.jspm.io/npm:xtend@4.0.2/immutable.js"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.js"

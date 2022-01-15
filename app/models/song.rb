@@ -4,6 +4,8 @@ class Song < ApplicationRecord
   has_many :setlist_songs
   has_many :setlists, through: :setlist_songs
 
+  has_rich_text :chords
+
   validates :name, presence: true, uniqueness: { scope: :band, message: 'Música já cadastrada' }
 
   scope :term, -> (term) { where("name ILIKE ? or artist ILIKE ?", "%#{term}%", "%#{term}%") }

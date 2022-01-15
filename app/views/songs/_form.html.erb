@@ -35,7 +35,8 @@
     <div class="mb-6">
       <%= form.label :chords, class: "text-sm font-medium block mb-2" %>
       <% # = form.text_area :chords, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      <%= form.text_area :chords, rows: 4, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+      <% # = form.text_area :chords, rows: 4, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+      <%= form.rich_text_area :chords, class: "w-full focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-indigo-900" %>
     </div>
 
     <div class="mb-6">
