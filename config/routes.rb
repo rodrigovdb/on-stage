@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :band_users, path: 'pessoas', path_names: ROUTE_PATH_NAMES
   end
 
-  get '/notice', to: 'bands#clear_message'
+  get '/notice', to: 'main#clear_message'
 
   devise_for :users, path: '', path_names: {
     sign_in: 'entrar',

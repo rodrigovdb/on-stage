@@ -5,6 +5,7 @@
   <%= turbo_stream.replace 'notice', partial: 'notice', locals: { notice: 'Success', status: 'green' } %>
 
   <%= turbo_stream.replace :new_band_user do %>
+    <%= turbo_frame_tag :new_band_user %>
   <% end %>
 
   <%= turbo_stream.replace :band_users_list do %>

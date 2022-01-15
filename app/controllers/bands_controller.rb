@@ -92,12 +92,6 @@ class BandsController < ApplicationController
     end
   end
 
-  def clear_message
-    respond_to do |format|
-      format.turbo_stream
-    end
-  end
-
   private
 
   def check_owner
