@@ -1,0 +1,9 @@
+<div class="w-full">
+  <div class="text-2xl"><%= @song%></div>
+  <div><%= t('models_and_attributes.attributes.song.key') %>: <%= @song.key %></div>
+  <div><%= t('models_and_attributes.attributes.song.duration') %>: <%= @song.duration %></div>
+
+  <div>
+    <pre><%= @song.chords %></pre>
+  </div>
+</div>

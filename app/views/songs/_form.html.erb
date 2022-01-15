@@ -1,0 +1,50 @@
+<%= turbo_frame_tag dom_id song do %>
+  <%= form_with(model: [@band, song], class: "contents") do |form| %>
+    <% if song.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+        <ul>
+          <% song.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-6">
+      <%= form.label :name, class: "text-sm font-medium block mb-2" %>
+      <%= form.text_field :name, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :artist, class: "text-sm font-medium block mb-2" %>
+      <%= form.text_field :artist, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :key, class: "text-sm font-medium block mb-2" %>
+      <%= form.text_field :key, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :duration, class: "text-sm font-medium block mb-2" %>
+      <%= form.number_field :duration, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+    </div>
+
+    <div class="mb-6">
+      <%= form.label :chords, class: "text-sm font-medium block mb-2" %>
+      <% # = form.text_area :chords, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.text_area :chords, rows: 4, class: "w-full dark:bg-slate-900 focus:dark:bg-indigo-900 focus:dark:border-transparent focus:dark:border-b-indigo-900 focus:text-white dark:border-transparent dark:border-b-indigo-900 border-b-indigo-700" %>
+    </div>
+
+    <div class="mb-6">
+      <div class="inline-flex rounded-md shadow-sm" role="group">
+        <%= form.submit class: "rounded-l-lg py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-slate-900 dark:border-slate-900 hover:border-indigo-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
+        <%= link_to "#{t('back_to')} #{t('models_and_attributes.models.song.other').downcase}",
+          band_songs_path(@band),
+          class: "rounded-r-md py-1 px-2 text-sm font-medium bg-indigo-100 dark:bg-indigo-900 border border-slate-900 dark:border-slate-900 hover:border-indigo-900 hover:dark:bg-indigo-600 hover:bg-indigo-600" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<% if @song.errors.present? %>
+  <%= notice_stream(domain: :song, message: :error, status: 'red') %>
+  <%= form_song_stream(song: @song) %>
+<% else %>
+  <%= notice_stream(domain: :song, message: :update, status: 'green') %>
+
+  <%= turbo_stream.replace :new_song do %>
+    <%= turbo_frame_tag :new_song %>
+  <% end %>
+
+  <%= turbo_stream.replace :songs_list do %>
+    <%= turbo_frame_tag :songs_list do %>
+      <%= render 'songs' %>
+    <% end %>
+  <% end %>
+<% end %>

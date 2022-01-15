@@ -20,33 +20,6 @@ class BandsController < ApplicationController
     render :new
   end
 
-  def invite_people
-  end
-
-  def join_members
-    user    = User.find_by_email params[:email]
-    @errors = validate_insert_member(user)
-
-    return unless @errors.empty?
-
-    @band.users << user
-
-    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-  end
-
-  def remove_member
-    user    = User.find params[:member]
-
-    @errors = validate_remove_member(user)
-
-    return render :show unless @errors.empty?
-
-    item = BandUser.where(band: @band, user: user).first
-    item.destroy
-
-    redirect_to band_path(@band), notice: 'Usuário adicionado com sucesso'
-  end
-
   # POST /bands or /bands.json
   def create
     @band = Band.new(band_params.merge(owner: current_user))

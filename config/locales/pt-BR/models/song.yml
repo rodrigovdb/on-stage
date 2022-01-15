@@ -1,0 +1,13 @@
+pt-BR:
+  models_and_attributes: &models_and_attributes
+    models:
+      song: &song
+        one: Músicas
+        other: Músicas
+    attributes:
+      song: &song
+        name: Nome
+        artist: Artista
+        key: Tom
+        duration: Duração
+        chords: Cifra
