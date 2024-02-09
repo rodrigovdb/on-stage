@@ -7,6 +7,7 @@ ruby '3.2.0'
 
 gem 'rails', '~> 7.0.8'
 
+gem 'dotenv-rails'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
