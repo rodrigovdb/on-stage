@@ -1,0 +1,30 @@
+<%= turbo_frame_tag song do %>
+  <p>
+  <strong>Name:</strong>
+  <%= song.name %>
+  </p>
+
+  <p>
+  <strong>Artist:</strong>
+  <%= song.artist %>
+  </p>
+
+  <p>
+  <strong>Key:</strong>
+  <%= song.key %>
+  </p>
+
+  <p>
+  <strong>Duration:</strong>
+  <%= song.duration %>
+  </p>
+
+  <p>
+  <strong>Chords:</strong>
+  <%= song.chords %>
+  </p>
+
+  <%= link_to t('app.play'), band_song_path(@band, song), data: { turbo: false } %>
+  <%= link_to t('app.edit', item: song.class.name), edit_band_song_path(@band, song) %>
+  <%= button_to t('app.delete', item: song.class.name), band_song_path(@band, song), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } } %>
+<% end %>

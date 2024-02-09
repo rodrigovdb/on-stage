@@ -1,0 +1,6 @@
+<h1><%= t('app.new', item: Band.model_name.human.pluralize) %></h1>
+<%= link_to t('app.back', item: Band.model_name.human.pluralize), bands_path %>
+
+<%= turbo_frame_tag @band do %>
+  <%= render "form", band: @band %>
+<% end %>

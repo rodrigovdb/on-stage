@@ -1,0 +1,18 @@
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title"><%= t('app.new', item: Band.model_name.human) %></h5>
+    <%= form_with(model: band) do |form| %>
+      <% if band.errors.any? %>
+        <%= render 'errors', object: band %>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, required: 'required', class: 'form-control' %>
+      </div>
+
+        <%= form.submit t('app.create', item: Band.model_name.human), class: 'btn btn-dark' %>
+        <%= link_to t('app.cancel'), bands_path %>
+    <% end %>
+  </div>
+</div>

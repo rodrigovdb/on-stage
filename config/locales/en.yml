@@ -30,4 +30,29 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  login:
+    login: "Login"
+    sign_up: "Sign Up"
+    never_share: "We'll never share your email with anyone else."
+    minimum_length: "%{quantity} characters minimum."
+    recover_password: "Password Recover"
+    send_password_instructions: "Send me instructions"
+  app:
+    new: "New %{item}"
+    create: "Create %{item}"
+    edit: "Edit %{item}"
+    delete: "Delete %{item}"
+    remove: "Remove %{item}"
+    confirm: "Are you sure?"
+    confirm_delete: "Are you sure? This is irreveresible!"
+    back: "Back to %{item}"
+    prohibited: "Some error(s) prohibited this record to be saved"
+    cancel: "Cancel"
+    list: "List"
+    successfully_created: "%{item} was successfully created."
+    successfully_updated: "%{item} was successfully updated."
+    successfully_destroyed: "%{item} was successfully destroyed."
+    ownership_successfully_transfered: "Ownership successfully transfered."
+    select: "Select"
+  band:
+    add_member: "Add Member"

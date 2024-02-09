@@ -1,0 +1,16 @@
+<div data-controller="bands">
+  <h1><%= Band.model_name.human.pluralize %></h1>
+
+  <%= link_to new_band_path, data: { turbo_frame: dom_id(Band.new) }, class: 'btn btn-dark' do %>
+    <i class="fa fa-plus"></i>
+    <%= t('app.new', item: Band.model_name.human) %>
+  <% end %>
+
+  <%= turbo_frame_tag Band.new %>
+
+  <div class="list-group list-group-flush">
+    <%= turbo_frame_tag 'bands' do %>
+      <%= render @bands %>
+    <% end %>
+  </div>
+</div>

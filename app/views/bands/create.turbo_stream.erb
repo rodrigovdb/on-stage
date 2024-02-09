@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "bands", partial: "bands/band", locals: { band: @band } %>
+<%= turbo_stream.update Band.new, "" %>

@@ -1,0 +1,9 @@
+<div class="alert alert-danger" role="alert">
+  <div><%= t('app.prohibited', count: object.errors.count) %></div>
+  <ul>
+    <% object.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+

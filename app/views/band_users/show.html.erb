@@ -1,0 +1,8 @@
+<%= render @band_user %>
+
+<div>
+  <%= link_to "Edit this band user", edit_band_user_path(@band_user) %> |
+  <%= link_to "Back to band users", band_users_path %>
+
+  <%= button_to "Destroy this band user", @band_user, method: :delete %>
+</div>

@@ -8,9 +8,22 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body data-bs-theme="dark">
+    <main>
+      <% if user_signed_in? %>
+        <%= render 'menu' %>
+      <% end %>
+
+      <% if notice %>
+        <p style="color: green"><%= notice %></p>
+      <% end %>
+
+      <div class="container-lg px-5">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

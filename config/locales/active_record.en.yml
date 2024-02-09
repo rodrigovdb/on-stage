@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      band:
+        one: Band
+        other: Bands
+      band_user:
+        one: Member
+        other: Members
+    attributes:
+      band:
+        name: "Name"
+      band_user:
+        role: "Role"

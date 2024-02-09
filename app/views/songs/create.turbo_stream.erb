@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "songs", partial: "songs/song", locals: { song: @song } %>
+<%= turbo_stream.update Song.new, "" %>

@@ -1,0 +1,9 @@
+<h1><%= t('app.edit', item: @band.class.name) %></h1>
+<%= link_to t('app.back', item: @band.class.name.pluralize), bands_path %>
+
+<%= turbo_frame_tag @band do %>
+  <%= render "form", band: @band %>
+<% end %>
+
+<%= link_to t('app.bands.select'), @band %>
+<%= link_to t('app.bands.list'), bands_path %>

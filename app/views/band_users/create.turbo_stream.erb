@@ -1,0 +1,2 @@
+<%= turbo_stream.append "band_users", partial: "band_users/band_user", locals: { band: @band, band_user: @band_user } %>
+<%= turbo_stream.update BandUser.new, "" %>

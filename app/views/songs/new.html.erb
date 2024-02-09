@@ -1,0 +1,6 @@
+<h1><%= t('app.new', item: @song.class.name) %></h1>
+<%= link_to t('app.back', item: @song.class.name.pluralize), band_songs_path %>
+
+<%= turbo_frame_tag @song do %>
+  <%= render "form", song: @song %>
+<% end %>

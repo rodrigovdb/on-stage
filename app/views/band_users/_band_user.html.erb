@@ -1,0 +1,28 @@
+<div class="list-group-item" id="<%= dom_id band_user %>">
+  <div class="d-flex w-100 justify-content-between">
+    <span>
+      <% if band_user.owner? %>
+        <i class="fa-solid fa-user-gear me-1"></i>
+      <% else %>
+        <i class="fa-solid fa-user me-1"></i>
+      <% end %>
+
+      <%= band_user.user.email %>
+    </span>
+
+    <div class="d-flex">
+      <% if @band.owner == current_user %>
+        <% if @band.owner.id != band_user.user_id %>
+          <%= button_to band_band_user_path(@band, band_user), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } }, class: 'btn btn-sm btn-dark' do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        <% end %>
+        <% unless band_user.owner? %>
+          <%= button_to transfer_ownership_band_band_user_path(@band, band_user), method: :post, form: { data: { turbo_confirm: t('app.confirm') } }, class: 'btn btn-sm btn-dark' do %>
+            <i class="fa-solid fa-right-left"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

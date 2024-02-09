@@ -1,0 +1,86 @@
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title"><%= t('app.new', item: Song.model_name.human) %></h5>
+    <%= form_with(model: [@band, song]) do |form| %>
+      <% if song.errors.any? %>
+        <%= render 'errors', object: song %>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, required: 'required', class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :artist, class: 'form-label' %>
+        <%= form.text_field :artist, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :key, class: 'form-label' %>
+        <%= form.text_field :key, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :duration, class: 'form-label' %>
+        <%= form.number_field :duration, class: 'form-control' %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :chords, class: 'form-label' %>
+        <%= form.text_area :chors, class: 'form-control' %>
+      </div>
+
+        <%= form.submit t('app.create', item: Song.model_name.human), class: 'btn btn-dark' %>
+        <%= link_to t('app.cancel'), band_songs_path %>
+    <% end %>
+  </div>
+</div>
+
+<%# <%= form_with(model: song) do |form| %1> %>
+<%#   <% if song.errors.any? %1> %>
+<%#     <div style="color: red"> %>
+<%#       <h2><%= pluralize(song.errors.count, "error") %1> prohibited this song from being saved:</h2> %>
+
+<%#       <ul> %>
+<%#         <% song.errors.each do |error| %1> %>
+<%#           <li><%= error.full_message %1></li> %>
+<%#         <% end %1> %>
+<%#       </ul> %>
+<%#     </div> %>
+<%#   <% end %1> %>
+
+<%#   <div> %>
+<%#     <%= form.label :band_id, style: "display: block" %1> %>
+<%#     <%= form.text_field :band_id %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.label :name, style: "display: block" %1> %>
+<%#     <%= form.text_field :name %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.label :artist, style: "display: block" %1> %>
+<%#     <%= form.text_field :artist %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.label :key, style: "display: block" %1> %>
+<%#     <%= form.text_field :key %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.label :duration, style: "display: block" %1> %>
+<%#     <%= form.number_field :duration %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.label :chords, style: "display: block" %1> %>
+<%#     <%= form.text_area :chords %1> %>
+<%#   </div> %>
+
+<%#   <div> %>
+<%#     <%= form.submit %1> %>
+<%#   </div> %>
+<%# <% end %1> %>

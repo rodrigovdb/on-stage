@@ -1,0 +1,29 @@
+<h1><%= @band.name %></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Members</h5>
+          <div class="list-group list-group-flush">
+            <%= turbo_frame_tag 'band_users' do %>
+              <%= render @band.band_users.order({ role: :desc, created_at: :asc }).includes(:user) %>
+            <% end %>
+          </div>
+
+          <%= turbo_frame_tag BandUser.new %>
+        </div>
+
+        <% if @band.owner == current_user %>
+          <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-dark' do %>
+            <%= t('band.add_member') %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</div>

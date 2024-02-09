@@ -1,0 +1,16 @@
+<h1> <%= @band.name  %> </h1>
+<h2> <%= BandUser.model_name.human.pluralize  %> </h2>
+
+<% if @band.owner == current_user %>
+  <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) } do %>
+    <%= t('band-users.new') %>
+  <% end %>
+<% end %>
+
+<%= turbo_frame_tag BandUser.new %>
+
+<ul>
+  <%= turbo_frame_tag 'band_users' do %>
+    <%= render @band_users %>
+  <% end %>
+</ul>
