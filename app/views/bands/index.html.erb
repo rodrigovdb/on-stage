@@ -1,4 +1,4 @@
-<div data-controller="bands">
+<div>
   <h1><%= Band.model_name.human.pluralize %></h1>
 
   <%= link_to new_band_path, data: { turbo_frame: dom_id(Band.new) }, class: 'btn btn-dark' do %>
