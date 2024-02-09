@@ -7,16 +7,20 @@ ruby '3.2.0'
 
 gem 'rails', '~> 7.0.8'
 
+gem 'importmap-rails'
+gem 'jbuilder'
 gem 'puma', '~> 5.0'
 gem 'sprockets-rails'
-gem 'sqlite3', '~> 1.4'
-
-gem 'importmap-rails'
-
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
-gem 'jbuilder'
+# DB
+gem 'pg'
+# gem 'sqlite3', '~> 1.4'
+
+# Authentication
+gem 'devise'
+gem 'devise-i18n'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
