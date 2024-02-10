@@ -13,13 +13,16 @@
           </div>
 
           <%= turbo_frame_tag BandUser.new %>
-        </div>
 
-        <% if @band.owner == current_user %>
-          <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-dark' do %>
-            <%= t('band.add_member') %>
-          <% end %>
-        <% end %>
+          <div class="mt-3">
+            <% if @band.owner == current_user %>
+              <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-light' do %>
+                <i class="fa fa-plus"></i>
+                <%= t('band.add_member') %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 

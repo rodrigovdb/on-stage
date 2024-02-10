@@ -1,27 +1,29 @@
-<li class="list-group-item">
-  <div class="d-flex w-100 justify-content-between">
-    <div class="p-2">
-      <h5 class="mb-1"><%= song.artist %> -  <%= song.name %></h5>
-      <p class="mb-1">
-        <%= t('activerecord.attributes.song.duration') %>:
-        <%= song.duration %>,
-        <%= t('activerecord.attributes.song.key') %>:
-        <%= song.key %>
-      </p>
-    </div>
+<%= turbo_frame_tag song do %>
+  <li class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <div class="p-2">
+        <h5 class="mb-1"><%= song.artist %> -  <%= song.name %></h5>
+        <p class="mb-1">
+          <%= t('activerecord.attributes.song.duration') %>:
+          <%= song.duration %>,
+          <%= t('activerecord.attributes.song.key') %>:
+          <%= song.key %>
+        </p>
+      </div>
 
-    <div class="p-2">
-      <div class="d-flex justify-content-end">
-        <%= link_to band_song_path(@band, song), data: { turbo: false }, class: 'btn btn-dark' do %>
-          <i class="fa fa-play"></i>
-        <% end %>
-        <%= link_to edit_band_song_path(@band, song), data: { turbo_frame: @song }, class: 'btn btn-dark' do %>
-          <i class="fa fa-pencil"></i>
-        <% end %>
-        <%= button_to band_song_path(@band, song), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } }, class: 'btn btn-dark' do %>
-          <i class="fa fa-trash"></i>
-        <% end %>
+      <div class="p-2">
+        <div class="d-flex justify-content-end">
+          <%= link_to band_song_path(@band, song), data: { turbo: false }, class: 'btn btn-dark' do %>
+            <i class="fa fa-play"></i>
+          <% end %>
+          <%= link_to edit_band_song_path(@band, song), data: { turbo_frame: @song }, class: 'btn btn-dark' do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= button_to band_song_path(@band, song), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } }, class: 'btn btn-dark' do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</li>
+  </li>
+<% end %>

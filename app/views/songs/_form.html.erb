@@ -1,6 +1,5 @@
 <div class="card my-2">
   <div class="card-body">
-    <h5 class="card-title"><%= t('app.new', item: Song.model_name.human) %></h5>
     <%= form_with(model: [@band, song]) do |form| %>
       <% if song.errors.any? %>
         <%= render 'errors', object: song %>
@@ -31,8 +30,12 @@
         <%= form.text_area :chors, class: 'form-control' %>
       </div>
 
-        <%= form.submit t('app.create', item: Song.model_name.human), class: 'btn btn-dark' %>
-        <%= link_to t('app.cancel'), band_songs_path %>
+      <div data-controller="modal">
+        <%= form.submit class: 'btn btn-light' %>
+        <%= link_to band_songs_path, data: { action: 'click->modal#hide' }, class: 'btn btn-secondary' do %>
+          <%= t('app.cancel') %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

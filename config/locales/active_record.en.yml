@@ -7,8 +7,17 @@ en:
       band_user:
         one: Member
         other: Members
+      song:
+        one: Song
+        other: Songs
     attributes:
       band:
         name: "Name"
       band_user:
         role: "Role"
+      song:
+        name: "Name"
+        artist: "Artist"
+        duration: "Duration"
+        key: "Key"
+        chords: "Chords"

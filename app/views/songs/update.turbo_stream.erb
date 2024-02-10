@@ -1,1 +1,2 @@
-<%= turbo_stream.update @band, partial: "bands/band", locals: { band: @band } %>
+<%= turbo_stream.prepend "songs", partial: "songs/song", locals: { song: @song } %>
+<%= turbo_stream.update @song, @song %>
