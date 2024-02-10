@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= @band.name %> - <%= @song.name %>, by <%= @song.artist %></h1>
 
-<%= render @song %>
+<div class="d-flex flex-row mb-3">
+  <div class="p-2">
+    <%= t('activerecord.attributes.song.duration') %>: <%= @song.track_duration || '-' %>
+  </div>
+  <div class="p-2">
+    <%= t('activerecord.attributes.song.key') %>: <%= @song.key || '-' %>
+  </div>
+</div>
 
-<div>
-  <%= link_to "Edit this song", edit_song_path(@song) %> |
-  <%= link_to "Back to songs", songs_path %>
-
-  <%= button_to "Destroy this song", @song, method: :delete %>
+<div class="card">
+  <div class="card-body">
+    <pre><%= @song.chords %></pre>
+  </div>
 </div>
