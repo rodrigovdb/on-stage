@@ -1,10 +1,6 @@
-<h1>Editing song</h1>
+<h1><%= t('app.edit', item: @song.class.name) %></h1>
+<%= link_to t('app.back', item: @song.class.name.pluralize), band_songs_path %>
 
-<%= render "form", song: @song %>
-
-<br>
-
-<div>
-  <%= link_to "Show this song", band_song_path(@band, @song) %> |
-  <%= link_to "Back to songs", band_songs_path(@band) %>
-</div>
+<%= turbo_frame_tag @song do %>
+  <%= render "form", song: @song %>
+<% end %>
