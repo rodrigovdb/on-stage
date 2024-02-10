@@ -1,0 +1,10 @@
+<h1><%= @band.name %> - <%= @setlist.name %></h1>
+
+<%= render @setlist %>
+
+<div>
+  <%= link_to "Edit this setlist", edit_band_setlist_path(@band, @setlist) %> |
+  <%= link_to "Back to setlists", band_setlists_path(@band) %>
+
+  <%= button_to "Destroy this setlist", band_setlist_path(@band, @setlist), method: :delete %>
+</div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
 
     resources :songs
+    resources :setlists
   end
 
   # Defines the root path route ("/")

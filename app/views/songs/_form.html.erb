@@ -31,12 +31,10 @@
         <%= form.text_area :chors, class: 'form-control' %>
       </div>
 
-      <div data-controller="modal">
-        <%= form.submit class: 'btn btn-light' %>
-        <%= link_to band_songs_path, data: { action: 'click->modal#hide' }, class: 'btn btn-secondary' do %>
-          <%= t('app.cancel') %>
-        <% end %>
-      </div>
+      <%= form.submit class: 'btn btn-light' %>
+      <%= link_to band_songs_path, class: 'btn btn-secondary' do %>
+        <%= t('app.cancel') %>
+      <% end %>
     <% end %>
   </div>
 </div>

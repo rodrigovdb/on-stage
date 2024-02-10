@@ -1,0 +1,19 @@
+<div class="card my-2">
+  <div class="card-body">
+    <%= form_with(model: [@band, setlist]) do |form| %>
+      <% if setlist.errors.any? %>
+        <%= render 'errors', object: setlist %>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, required: 'required', class: 'form-control' %>
+      </div>
+
+        <%= form.submit class: 'btn btn-light' %>
+        <%= link_to band_setlists_path, class: 'btn btn-secondary' do %>
+          <%= t('app.cancel') %>
+        <% end %>
+    <% end %>
+  </div>
+</div>

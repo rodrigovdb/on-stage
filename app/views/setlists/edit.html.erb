@@ -1,0 +1,6 @@
+<h1><%= t('app.new', item: @setlist.class.name) %></h1>
+<%= link_to t('app.back', item: @setlist.class.name.pluralize), band_setlists_path %>
+
+<%= turbo_frame_tag @setlist do %>
+  <%= render "form", setlist: @setlist %>
+<% end %>

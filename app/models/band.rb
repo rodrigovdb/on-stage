@@ -5,6 +5,7 @@ class Band < ApplicationRecord
   has_many :users, through: :band_users
 
   has_many :songs, dependent: :destroy
+  has_many :setlists, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 3 }
 

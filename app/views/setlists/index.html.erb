@@ -1,0 +1,14 @@
+<h1><%= @band.name %> - <%= t('band.setlists') %></h1>
+
+<%= link_to new_band_setlist_path(@band), data: { turbo_frame: dom_id(Setlist.new), action: 'click->modal#show'  }, class: 'btn btn-light mb-3' do %>
+  <i class="fa fa-plus"></i>
+  <%= t('app.new', item: Setlist.model_name.human) %>
+<% end %>
+
+<%= turbo_frame_tag Setlist.new %>
+
+<ul class="list-group list-group-flush">
+  <%= turbo_frame_tag 'setlists' do %>
+    <%= render @setlists %>
+  <% end %>
+</ul>

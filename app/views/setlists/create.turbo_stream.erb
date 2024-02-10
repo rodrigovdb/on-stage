@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "setlists", partial: "setlists/setlist", locals: { setlist: @setlist } %>
+<%= turbo_stream.update Setlist.new, "" %>

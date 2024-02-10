@@ -28,6 +28,11 @@
                   <%= Song.model_name.human.pluralize %>
                 <% end %>
               </li>
+              <li>
+                <%= link_to band_setlists_path(@band), class: 'dropdown-item' do %>
+                  <%= Setlist.model_name.human.pluralize %>
+                <% end %>
+              </li>
             </ul>
           </li>
         <% end %>

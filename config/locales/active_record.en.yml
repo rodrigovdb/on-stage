@@ -10,6 +10,9 @@ en:
       song:
         one: Song
         other: Songs
+      setlist:
+        one: Setlist
+        other: Setlists
     attributes:
       band:
         name: "Name"
@@ -21,3 +24,5 @@ en:
         duration: "Duration"
         key: "Key"
         chords: "Chords"
+      setlist:
+        name: "Name"
