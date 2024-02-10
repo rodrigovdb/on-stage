@@ -5,7 +5,7 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Members</h5>
+          <h5 class="card-title"><%= t('band.members') %></h5>
           <div class="list-group list-group-flush">
             <%= turbo_frame_tag 'band_users' do %>
               <%= render @band.band_users.order({ role: :desc, created_at: :asc }).includes(:user) %>
@@ -26,7 +26,32 @@
       </div>
     </div>
 
-    <div class="col"></div>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= t('band.last_songs') %></h5>
+          <div class="list-group">
+            <% @band.songs.order(created_at: :desc).limit(5).each do |song| %>
+              <%= link_to band_song_path(@band, song), class: 'list-group-item list-group-item-action' do %>
+                <li>
+                  <%= song.artist %> -  <%= song.name %>
+                </li>
+              <% end %>
+            <% end %>
+          </div>
+
+          <%= turbo_frame_tag BandUser.new %>
+
+          <div class="mt-3">
+            <%= link_to band_setlists_path(@band), data: { turbo_frame: false }, class: 'btn btn-light' do %>
+              <i class="fa fa-eye"></i>
+              <%= t('band.songs') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col"></div>
   </div>
 </div>
