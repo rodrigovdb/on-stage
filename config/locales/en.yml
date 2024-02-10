@@ -55,4 +55,6 @@ en:
     ownership_successfully_transfered: "Ownership successfully transfered."
     select: "Select"
   band:
+    my_bands: "My Bands"
+    home: "Band Home"
     add_member: "Add Member"

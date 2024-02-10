@@ -1,25 +1,46 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <%= link_to '.: OnStage', root_path, class: 'navbar-brand' %>
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <i class="fa-solid fa-music"></i>
+      <span class="mx-1">OnStage</span>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to Band.model_name.human.pluralize, bands_path, class: 'nav-link active' %>
-        </li>
+        <% if @band %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= @band.name %>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to band_songs_path(@band), class: 'dropdown-item' do %>
+                  <%= t('band.home') %>
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to band_songs_path(@band), class: 'dropdown-item' do %>
+                  <%= Song.model_name.human.pluralize %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
 
       <div class="dropdown dropdown-right">
         <a href="#" class="dropdown-toggle link-light link-underline-opacity-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa-solid fa-user"></i>
+          <span class="mx-1">
+            <%= current_user.email %>
+          </span>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-          <%# <li><a class="dropdown-item" href="#">Action</a></li> %>
-          <%# <li><%= current_user.email %1></li> %>
-          <%# <li><hr class="dropdown-divider"></li> %>
           <li>
             <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo: false } }, class: 'btn btn-dark' do %>
               <i class="fa-solid fa-right-from-bracket"></i>
