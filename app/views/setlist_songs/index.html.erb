@@ -9,7 +9,7 @@
 <%= turbo_frame_tag SetlistSong.new %>
 
 <div class="list-group list-group-flush">
-  <%= turbo_frame_tag 'setlist_songs' do %>
+  <%= turbo_frame_tag 'setlist_songs', data: { controller: 'sortable', 'sortable-animation-value': '160', 'sortable-handle-value': '.list-group-item' } do %>
     <%= render @setlist_songs %>
   <% end %>
 </div>

@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# References
+
+- [Stimulus Sortable](https://www.stimulus-components.com/docs/stimulus-sortable)

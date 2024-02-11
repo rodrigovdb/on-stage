@@ -36,7 +36,7 @@
             <% @band.songs.order(created_at: :desc).limit(5).each do |song| %>
               <div class="list-group-item">
                 <div class="d-flex w-100 justify-content-between">
-                  <span><%= song.artist %> -  <%= song.name %></span>
+                  <span><%= song %></span>
 
                   <div class="d-flex">
                     <%= link_to band_song_path(@band, song), class: 'btn btn-sm btn-dark' do %>

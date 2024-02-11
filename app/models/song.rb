@@ -17,4 +17,8 @@ class Song < ApplicationRecord
 
     TrackDuration.new(duration).to_s
   end
+
+  def to_s
+    "#{name} (#{artist})"
+  end
 end
