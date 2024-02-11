@@ -5,6 +5,9 @@
 
       <div class="p-2">
         <div class="d-flex justify-content-end">
+          <%= link_to band_setlist_path(@band, setlist), data: { turbo: false }, class: 'btn btn-dark' do %>
+            <i class="fa-solid fa-play"></i>
+          <% end %>
           <%= link_to band_setlist_setlist_songs_path(@band, setlist), data: { turbo: false }, class: 'btn btn-dark' do %>
             <i class="fa-solid fa-sort"></i>
           <% end %>

@@ -15,7 +15,8 @@ class SetlistsController < ApplicationController
 
   # GET /setlists/1 or /setlists/1.json
   def show
-    @songs = @setlist.songs.order(display_sort: :asc)
+    page = params[:page] || 1
+    @setlist_songs = @setlist.setlist_songs.order(:display_sort).includes(:song).page(page).per(1)
   end
 
   # GET /setlists/new

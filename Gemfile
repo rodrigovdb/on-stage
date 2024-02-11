@@ -41,6 +41,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Frontend
 gem 'bootstrap', '~> 5.3.2'
+gem 'kaminari'
 gem 'sassc-rails'
 
 # Track duration

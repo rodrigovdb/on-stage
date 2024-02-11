@@ -1,3 +1,4 @@
+<!--
 <h1><%= @band.name %> - <%= @setlist.name %></h1>
 
 <div class="d-flex justify-content-end">
@@ -7,3 +8,19 @@
     <%= button_to "Destroy this setlist", band_setlist_path(@band, @setlist), method: :delete, class: 'btn btn-outline-light' %>
   </div>
 </div>
+-->
+<%= paginate @setlist_songs %>
+
+<% @setlist_songs.each do |setlist_song| %>
+  <h3><%= setlist_song.song %></h3>
+  <p>
+  <% unless setlist_song.song.key.blank? %>
+    <%= t('activerecord.attributes.song.key') %>: <%= setlist_song.song.key %>
+  <% end %>
+  </p>
+
+  <pre><%= setlist_song.song.chords %></pre>
+<% end %>
+
+
+<%= paginate @setlist_songs %>
