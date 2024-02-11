@@ -9,8 +9,8 @@
 
 <%= turbo_frame_tag BandUser.new %>
 
-<ul>
+<div class="list-group list-group-flush">
   <%= turbo_frame_tag 'band_users' do %>
     <%= render @band_users %>
   <% end %>
-</ul>
+</div>
