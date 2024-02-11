@@ -1,6 +1,9 @@
 <div id="login-card" class="card">
   <div class="card-body">
-    <h5 class="card-title">.: OnStage - <%= t('login.login') %></h5>
+    <h5 class="card-title">
+      <i class="fa-solid fa-music"></i>
+      OnStage - <%= t('login.login') %>
+    </h5>
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="mb-3">
@@ -13,7 +16,7 @@
           <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
         </div>
 
-        <%= f.submit t('login.login'), class: 'btn btn-dark' %>
+        <%= f.submit t('login.login'), class: 'btn btn-outline-light' %>
       <% end %>
     </div>
 
