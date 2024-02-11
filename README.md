@@ -2,6 +2,7 @@
 
 ```
 $ docker-compose build
+$ docker-compose run --rm web rake db:setup
 $ docker-compose up
 ```
 
