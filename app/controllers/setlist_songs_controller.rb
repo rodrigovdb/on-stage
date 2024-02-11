@@ -11,7 +11,7 @@ class SetlistSongsController < ApplicationController
 
   # GET /setlist_songs or /setlist_songs.json
   def index
-    @setlist_songs = SetlistSong.all
+    @setlist_songs = @setlist.setlist_songs.order(:display_sort).includes(:song)
   end
 
   # GET /setlist_songs/1 or /setlist_songs/1.json

@@ -8,9 +8,7 @@
 
   <%= turbo_frame_tag Band.new %>
 
-  <div class="list-group list-group-flush">
-    <%= turbo_frame_tag 'bands' do %>
-      <%= render @bands %>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag 'bands', class: 'list-group list-group-flush' do %>
+    <%= render @bands %>
+  <% end %>
 </div>

@@ -10,9 +10,10 @@
         <%= form.email_field :email, required: 'required', class: 'form-control' %>
       </div>
 
-      <%= form.submit class: 'btn btn-outline-light' do %>
+      <button class="btn btn-outline-light" type="submit">
+        <i class="fa fa-plus"></i>
         <%= t('band.add_member') %>
-      <% end %>
+      </button>
       <%= link_to band_band_users_path, class: 'btn btn-outline-secondary' do %>
         <%= t('app.cancel') %>
       <% end %>

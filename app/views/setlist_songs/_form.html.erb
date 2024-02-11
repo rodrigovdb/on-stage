@@ -13,10 +13,12 @@
          { required: 'required', class: 'form-select' } %>
       </div>
 
-      <%= form.submit class: 'btn btn-outline-light' do %>
-        <%= t('band.add_member') %>
-      <% end %>
-      <%= link_to band_band_users_path, class: 'btn btn-outline-secondary' do %>
+      <button class="btn btn-outline-light" type="submit">
+        <i class="fa fa-plus"></i>
+        <%= t('app.add', item: Song.model_name.human) %>
+      </button>
+
+      <%= link_to band_setlist_setlist_songs_path(@band, @setlist), class: 'btn btn-outline-secondary' do %>
         <%= t('app.cancel') %>
       <% end %>
     <% end %>

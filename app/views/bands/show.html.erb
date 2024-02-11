@@ -3,61 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= t('band.members') %></h5>
-
-          <div class="list-group list-group-flush">
-            <%= turbo_frame_tag 'band_users' do %>
-              <%= render @band.band_users.order({ role: :desc, created_at: :asc }).includes(:user) %>
-            <% end %>
-          </div>
-
-          <%= turbo_frame_tag BandUser.new %>
-
-          <div class="mt-3">
-            <% if @band.owner == current_user %>
-              <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-outline-light' do %>
-                <i class="fa fa-plus"></i>
-                <%= t('band.add_member') %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render 'members' %>
     </div>
 
     <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= t('band.last_songs') %></h5>
-
-          <div class="list-group list-group-flush">
-            <% @band.songs.order(created_at: :desc).limit(5).each do |song| %>
-              <div class="list-group-item">
-                <div class="d-flex w-100 justify-content-between">
-                  <span><%= song %></span>
-
-                  <div class="d-flex">
-                    <%= link_to band_song_path(@band, song), class: 'btn btn-sm btn-dark' do %>
-                      <i class="fa fa-play"></i>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="mt-3">
-            <%= link_to band_setlists_path(@band), data: { turbo_frame: false }, class: 'btn btn-outline-light' do %>
-              <i class="fa fa-eye"></i>
-              <%= t('band.songs') %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <%= render 'last_songs' %>
     </div>
 
-    <div class="col"></div>
+    <div class="col">
+      <%= render 'last_setlists' %>
   </div>
 </div>
