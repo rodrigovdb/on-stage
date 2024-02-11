@@ -3,6 +3,9 @@
 class Song < ApplicationRecord
   belongs_to :band
 
+  has_many :setlist_songs, dependent: :destroy
+  has_many :setlists, through: :setlist_songs
+
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: { scope: :band_id }
 
   def track_duration=(string)

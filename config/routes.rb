@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     end
 
     resources :songs
-    resources :setlists
+    resources :setlists do
+      resources :setlist_songs, except: %i[edit update]
+    end
   end
 
   # Defines the root path route ("/")

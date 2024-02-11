@@ -1,0 +1,2 @@
+<%= turbo_stream.append "setlist_songs", partial: "setlist_songs/setlist_song", locals: { setlist_song: @setlist_song } %>
+<%= turbo_stream.update SetlistSong.new, "" %>

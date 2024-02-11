@@ -10,12 +10,12 @@
         <%= form.email_field :email, required: 'required', class: 'form-control' %>
       </div>
 
-        <%= form.submit class: 'btn btn-light' do %>
-          <%= t('band.add_member') %>
-        <% end %>
-        <%= link_to band_band_users_path, class: 'btn btn-secondary' do %>
-          <%= t('app.cancel') %>
-        <% end %>
+      <%= form.submit class: 'btn btn-outline-light' do %>
+        <%= t('band.add_member') %>
+      <% end %>
+      <%= link_to band_band_users_path, class: 'btn btn-outline-secondary' do %>
+        <%= t('app.cancel') %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,6 @@
+<h1><%= t('app.new', item: Song.model_name.human) %></h1>
+<%= link_to t('app.back', item: Song.model_name.human), band_setlist_setlist_songs_path(@band, @setlist) %>
+
+<%= turbo_frame_tag @setlist_song do %>
+  <%= render "form", setlist_song: @setlist_song %>
+<% end %>

@@ -1,7 +1,7 @@
 <div>
   <h1><%= t('band.my_bands') %></h1>
 
-  <%= link_to new_band_path, data: { turbo_frame: dom_id(Band.new) }, class: 'btn btn-light mb-3' do %>
+  <%= link_to new_band_path, data: { turbo_frame: dom_id(Band.new) }, class: 'btn btn-outline-light mb-3' do %>
     <i class="fa fa-plus"></i>
     <%= t('app.new', item: Band.model_name.human) %>
   <% end %>

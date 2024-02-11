@@ -1,0 +1,24 @@
+<div class="card my-2">
+  <div class="card-body">
+    <%= form_with(model: [@band, @setlist, setlist_song]) do |form| %>
+      <% if setlist_song.errors.any? %>
+        <%= render 'errors', object: setlist_song %>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: 'form-label' %>
+         <%= form.collection_select :song_id, @songs, \
+         :id, :name, \
+         { prompt: t('app.select') }, \
+         { required: 'required', class: 'form-select' } %>
+      </div>
+
+      <%= form.submit class: 'btn btn-outline-light' do %>
+        <%= t('band.add_member') %>
+      <% end %>
+      <%= link_to band_band_users_path, class: 'btn btn-outline-secondary' do %>
+        <%= t('app.cancel') %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

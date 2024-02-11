@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= t('band.members') %></h5>
-          
+
           <div class="list-group list-group-flush">
             <%= turbo_frame_tag 'band_users' do %>
               <%= render @band.band_users.order({ role: :desc, created_at: :asc }).includes(:user) %>
@@ -17,7 +17,7 @@
 
           <div class="mt-3">
             <% if @band.owner == current_user %>
-              <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-light' do %>
+              <%= link_to new_band_band_user_path(@band), data: { turbo_frame: dom_id(BandUser.new) }, class: 'btn btn-outline-light' do %>
                 <i class="fa fa-plus"></i>
                 <%= t('band.add_member') %>
               <% end %>
@@ -49,7 +49,7 @@
           </div>
 
           <div class="mt-3">
-            <%= link_to band_setlists_path(@band), data: { turbo_frame: false }, class: 'btn btn-light' do %>
+            <%= link_to band_setlists_path(@band), data: { turbo_frame: false }, class: 'btn btn-outline-light' do %>
               <i class="fa fa-eye"></i>
               <%= t('band.songs') %>
             <% end %>

@@ -1,22 +1,21 @@
 <%= turbo_frame_tag setlist do %>
-  <li class="list-group-item">
-  <div class="d-flex w-100 justify-content-between">
-      
-      <h5 class="mb-1"><%= setlist.name %></h5>
+  <div class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <label><%= setlist.name %></label>
 
       <div class="p-2">
         <div class="d-flex justify-content-end">
-          <%= link_to band_setlist_path(@band, setlist), data: { turbo: false }, class: 'btn btn-dark' do %>
-            <i class="fa fa-eye"></i>
+          <%= link_to band_setlist_setlist_songs_path(@band, setlist), data: { turbo: false }, class: 'btn btn-dark' do %>
+            <i class="fa-solid fa-sort"></i>
           <% end %>
           <%= link_to edit_band_setlist_path(@band, setlist), data: { turbo_frame: @setlist }, class: 'btn btn-dark' do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa-solid fa-pencil"></i>
           <% end %>
           <%= button_to band_setlist_path(@band, setlist), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } }, class: 'btn btn-dark' do %>
-            <i class="fa fa-trash"></i>
+            <i class="fa-solid fa-trash"></i>
           <% end %>
         </div>
       </div>
     </div>
-  </li>
+  </div>
 <% end %>

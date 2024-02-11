@@ -1,0 +1,11 @@
+<div class="list-group-item" id="<%= dom_id setlist_song %>">
+  <div class="d-flex w-100 justify-content-between">
+    <span><%= setlist_song.song.artist %> - <%= setlist_song.song.name %></span>
+
+    <div class="d-flex">
+      <%= button_to band_setlist_setlist_song_path(@band, @setlist, setlist_song), method: :delete, form: { data: { turbo_confirm: t('app.confirm_delete') } }, class: 'btn btn-sm btn-dark' do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

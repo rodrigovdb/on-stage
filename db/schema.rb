@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_10_040454) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_11_003740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_040454) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "setlist_songs", force: :cascade do |t|
+    t.bigint "setlist_id", null: false
+    t.bigint "song_id", null: false
+    t.integer "display_sort"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setlist_id"], name: "index_setlist_songs_on_setlist_id"
+    t.index ["song_id"], name: "index_setlist_songs_on_song_id"
   end
 
   create_table "setlists", force: :cascade do |t|
@@ -64,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_040454) do
 
   add_foreign_key "band_users", "bands"
   add_foreign_key "band_users", "users"
+  add_foreign_key "setlist_songs", "setlists"
+  add_foreign_key "setlist_songs", "songs"
   add_foreign_key "setlists", "bands"
   add_foreign_key "songs", "bands"
 end

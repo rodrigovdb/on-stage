@@ -1,6 +1,6 @@
 <h1><%= @band.name %> - <%= t('band.songs') %></h1>
 
-<%= link_to new_band_song_path(@band), data: { turbo_frame: dom_id(Song.new), action: 'click->modal#show'  }, class: 'btn btn-light mb-3' do %>
+<%= link_to new_band_song_path(@band), data: { turbo_frame: dom_id(Song.new), action: 'click->modal#show'  }, class: 'btn btn-outline-light mb-3' do %>
   <i class="fa fa-plus"></i>
   <%= t('app.new', item: Song.model_name.human) %>
 <% end %>

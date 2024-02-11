@@ -74,6 +74,6 @@ class BandUsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def band_user_params
-    params.require(:band_user).permit(:band_id, :user_id, :email)
+    params.require(:band_user).permit(:email)
   end
 end

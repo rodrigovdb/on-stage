@@ -14,7 +14,9 @@ class SetlistsController < ApplicationController
   end
 
   # GET /setlists/1 or /setlists/1.json
-  def show; end
+  def show
+    @songs = @setlist.songs.order(display_sort: :asc)
+  end
 
   # GET /setlists/new
   def new

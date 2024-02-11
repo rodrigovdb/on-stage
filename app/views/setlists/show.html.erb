@@ -1,10 +1,9 @@
 <h1><%= @band.name %> - <%= @setlist.name %></h1>
 
-<%= render @setlist %>
-
-<div>
-  <%= link_to "Edit this setlist", edit_band_setlist_path(@band, @setlist) %> |
-  <%= link_to "Back to setlists", band_setlists_path(@band) %>
-
-  <%= button_to "Destroy this setlist", band_setlist_path(@band, @setlist), method: :delete %>
+<div class="d-flex justify-content-end">
+  <div class="btn-group" role="group" aria-label="Basic outlined example">
+    <%= link_to "Edit this setlist", edit_band_setlist_path(@band, @setlist), class: 'btn btn-outline-light' %>
+    <%= link_to "Back to setlists", band_setlists_path(@band), class: 'btn btn-outline-light' %>
+    <%= button_to "Destroy this setlist", band_setlist_path(@band, @setlist), method: :delete, class: 'btn btn-outline-light' %>
+  </div>
 </div>
