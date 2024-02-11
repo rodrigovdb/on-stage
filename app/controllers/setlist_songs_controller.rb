@@ -5,7 +5,7 @@ class SetlistSongsController < ApplicationController
 
   before_action :set_band
   before_action :set_setlist
-  before_action :set_setlist_song, only: %i[ show edit update destroy ]
+  before_action :set_setlist_song, only: %i[ show update destroy ]
 
   before_action :ensure_band_member
 
@@ -38,6 +38,15 @@ class SetlistSongsController < ApplicationController
         format.json { render json: @setlist_song.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update
+    SwapSongSortService.call(
+      setlist_song: @setlist_song,
+      to_position: params.dig(:band_setlist_setlist_songs, :position)
+    )
+
+    head :no_content
   end
 
   # DELETE /setlist_songs/1 or /setlist_songs/1.json

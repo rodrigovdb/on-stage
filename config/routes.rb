@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :songs
     resources :setlists do
-      resources :setlist_songs, except: %i[edit update]
+      resources :setlist_songs, except: %i[edit]
     end
   end
 
