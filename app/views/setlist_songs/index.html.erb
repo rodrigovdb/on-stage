@@ -1,10 +1,16 @@
 <h1> <%= @band.name  %> </h1>
 <h2> <%= Song.model_name.human.pluralize  %> </h2>
 
-<%= link_to new_band_setlist_setlist_song_path(@band, @setlist), data: { turbo_frame: dom_id(SetlistSong.new) }, class: 'btn btn-outline-light mb-3' do %>
+<div class="btn-group" role="group" aria-label="Pagination">
+  <%= link_to new_band_setlist_setlist_song_path(@band, @setlist), data: { turbo_frame: dom_id(SetlistSong.new) }, class: 'btn btn-outline-light mb-3' do %>
     <i class="fa fa-plus"></i>
     <%= t('app.add', item: Song.model_name.human) %>
   <% end %>
+  <%= link_to band_setlist_path(@band, @setlist), class: 'btn btn-outline-light mb-3' do %>
+    <i class="fa fa-play"></i>
+    <%= t('app.play') %>
+  <% end %>
+</div>
 
 <%= turbo_frame_tag SetlistSong.new %>
 

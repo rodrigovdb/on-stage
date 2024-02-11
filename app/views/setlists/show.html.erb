@@ -1,15 +1,10 @@
-<!--
-<h1><%= @band.name %> - <%= @setlist.name %></h1>
+<div class="d-flex justify-content-between">
+  <%= link_to band_setlist_setlist_songs_path(@band, @setlist), class: 'btn bn-lg btn-light mb-3' do %>
+    <i class="fa-solid fa-circle-xmark"></i>
+  <% end%>
 
-<div class="d-flex justify-content-end">
-  <div class="btn-group" role="group" aria-label="Basic outlined example">
-    <%= link_to "Edit this setlist", edit_band_setlist_path(@band, @setlist), class: 'btn btn-outline-light' %>
-    <%= link_to "Back to setlists", band_setlists_path(@band), class: 'btn btn-outline-light' %>
-    <%= button_to "Destroy this setlist", band_setlist_path(@band, @setlist), method: :delete, class: 'btn btn-outline-light' %>
-  </div>
+  <%= paginate @setlist_songs %>
 </div>
--->
-<%= paginate @setlist_songs %>
 
 <% @setlist_songs.each do |setlist_song| %>
   <h3><%= setlist_song.song %></h3>

@@ -17,6 +17,7 @@ class SetlistsController < ApplicationController
   def show
     page = params[:page] || 1
     @setlist_songs = @setlist.setlist_songs.order(:display_sort).includes(:song).page(page).per(1)
+    @hide_nav = true
   end
 
   # GET /setlists/new

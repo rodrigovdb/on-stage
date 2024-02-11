@@ -12,7 +12,7 @@
 
   <body data-bs-theme="dark">
     <main>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !@hide_nav %>
         <%= render 'menu' %>
       <% end %>
 

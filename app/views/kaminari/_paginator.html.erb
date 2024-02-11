@@ -7,10 +7,9 @@
     paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
-<!-- 
-  <nav class="pagination" role="navigation" aria-label="pager">
-    <%= first_page_tag unless current_page.first? %>
-    <%= prev_page_tag unless current_page.first? %>
+  <div class="btn-group" role="group" aria-label="Pagination">
+    <%= first_page_tag %>
+    <%= prev_page_tag %>
     <% each_page do |page| -%>
       <% if page.display_tag? -%>
         <%= page_tag page %>
@@ -18,25 +17,7 @@
         <%= gap_tag %>
       <% end -%>
     <% end -%>
-    <% unless current_page.out_of_range? %>
-      <%= next_page_tag unless current_page.last? %>
-      <%= last_page_tag unless current_page.last? %>
-    <% end %>
-  </nav>
-  -->
-  <div class="d-flex justify-content-end">
-    <div class="btn-group" role="group" aria-label="Pagination">
-      <%= first_page_tag %>
-      <%= prev_page_tag %>
-      <% each_page do |page| -%>
-        <% if page.display_tag? -%>
-          <%= page_tag page %>
-        <% elsif !page.was_truncated? -%>
-          <%= gap_tag %>
-        <% end -%>
-      <% end -%>
-      <%= next_page_tag %>
-      <%= last_page_tag %>
-    </div>
+    <%= next_page_tag %>
+    <%= last_page_tag %>
   </div>
 <% end -%>
