@@ -337,6 +337,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rake
   rspec
   rspec-rails
   rubocop
