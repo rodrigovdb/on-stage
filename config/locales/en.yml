@@ -57,7 +57,7 @@ en:
     select: "Select"
   band:
     my_bands: "My Bands"
-    home: "Band Home"
+    home: "%{band} - Home"
     add_member: "Add Member"
     songs: "Repertoire"
     last_songs: "Last Songs"

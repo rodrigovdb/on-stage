@@ -1,0 +1,22 @@
+<div class="dropdown dropdown-right">
+  <a href="#" class="dropdown-toggle link-light link-underline-opacity-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fa-solid fa-user"></i>
+    <span class="mx-1">
+      <%= current_user.email %>
+    </span>
+  </a>
+
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li class="d-flex" style="border: solid 1px #f0f">
+      <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo: false } }, class: 'btn btn-dark d-flex  justify-content-between' do %>
+        <span>asdf</span>
+        <span>icon</span>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<!--
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <%= t('app.logout') %>
+-->

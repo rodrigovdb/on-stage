@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <%= link_to root_path, class: 'navbar-brand' do %>
       <i class="fa-solid fa-music"></i>
@@ -11,55 +11,21 @@
 
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to root_path, class: 'nav-link' do %>
+            <i class="fa-solid fa-user-group"></i>
+            <%= t('band.my_bands') %>
+          <% end %>
+        </li>
+
         <% if @band %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= @band.name %>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to @band, class: 'dropdown-item' do %>
-                  <%= t('band.home') %>
-                <% end %>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <%= link_to band_songs_path(@band), class: 'dropdown-item' do %>
-                  <%= Song.model_name.human.pluralize %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to band_setlists_path(@band), class: 'dropdown-item' do %>
-                  <%= Setlist.model_name.human.pluralize %>
-                <% end %>
-              </li>
-            </ul>
-          </li>
+          <%= render 'band_menu' %>
         <% end %>
       </ul>
 
-      <div class="dropdown dropdown-right">
-        <a href="#" class="dropdown-toggle link-light link-underline-opacity-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="fa-solid fa-user"></i>
-          <span class="mx-1">
-            <%= current_user.email %>
-          </span>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li>
-            <%= button_to destroy_user_session_path, method: :delete, form: { data: { turbo: false } }, class: 'btn btn-dark' do %>
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <%= t('app.logout') %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+      <span class="navbar-text">
+        <%= render 'user_menu' %>
+      </span>
     </div>
   </div>
 </nav>
-
-<%# <nav class="navbar fixed-bottom bg-dark border-bottom border-body" data-bs-theme="dark"> %>
-<%#   <div class="container-fluid"> %>
-<%#     <a class="navbar-brand" href="https://github.com/rodrigovdb#">by @rodrigovdb</a> %>
-<%#   </div> %>
-<%# </nav> %>

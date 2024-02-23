@@ -1,0 +1,59 @@
+<!-- Band dropdown menu -->
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= @band.name %>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to @band, class: 'dropdown-item' do %>
+        <i class="fa-solid fa-house"></i>
+        <%= t('band.home', band: @band.name) %>
+      <% end %>
+    </li>
+
+    <li><hr class="dropdown-divider"></li>
+
+    <li>
+      <%= link_to band_songs_path(@band), class: 'dropdown-item' do %>
+        <i class="fa-solid fa-headphones"></i>
+        <%= Song.model_name.human.pluralize %>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to band_setlists_path(@band), class: 'dropdown-item' do %>
+        <i class="fa-solid fa-list"></i>
+        <%= Setlist.model_name.human.pluralize %>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to band_band_users_path(@band), class: 'dropdown-item' do %>
+        <i class="fa-solid fa-people-group"></i>
+        <%= BandUser.model_name.human.pluralize %>
+      <% end %>
+    </li>
+  </ul>
+</li>
+
+<!-- Band Inline Menu -->
+<!--
+<li class="nav-item">
+  <%= link_to @band, class: 'nav-link' do %>
+    <i class="fa-solid fa-house"></i>
+    <%= t('band.home', band: @band.name) %>
+  <% end %>
+</li>
+<li class="nav-item">
+  <%= link_to band_songs_path(@band), class: 'nav-link' do %>
+    <i class="fa-solid fa-headphones"></i>
+    <%= Song.model_name.human.pluralize %>
+  <% end %>
+</li>
+<li class="nav-item">
+  <%= link_to band_setlists_path(@band), class: 'nav-link' do %>
+    <i class="fa-solid fa-list"></i>
+    <%= Setlist.model_name.human.pluralize %>
+  <% end %>
+</li>
+-->
